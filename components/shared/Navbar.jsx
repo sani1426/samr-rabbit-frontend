@@ -6,6 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 import SearchBar from './SearchBar'
 import CartDrawer from './CartDrawer'
+import CartButton from '../ui/CartButton'
 
 const Navbar = () => {
   return (
@@ -46,8 +47,8 @@ const Navbar = () => {
           <Link href='/profile' className='hover:text-black '>
             <HiOutlineUser className='h-6 w-6 text-gray-700' />
           </Link>
-        {/*  Cart  */}
-        <CartDrawer />
+        {/*  Cart  button */}
+       <CartButton />
           {/* search icon */}
           <div className='overflow-hidden'>
             <SearchBar />
@@ -58,7 +59,7 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
-
+      <CartDrawer />
     </>
   )
 }
