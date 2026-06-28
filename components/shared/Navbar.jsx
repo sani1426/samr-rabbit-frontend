@@ -6,7 +6,7 @@ import {
 import Link from 'next/link'
 import React from 'react'
 import SearchBar from './SearchBar'
-import Image from 'next/image'
+import CartDrawer from './CartDrawer'
 
 const Navbar = () => {
   return (
@@ -47,12 +47,8 @@ const Navbar = () => {
           <Link href='/profile' className='hover:text-black '>
             <HiOutlineUser className='h-6 w-6 text-gray-700' />
           </Link>
-          <button className='relative hover:text-black'>
-            <HiOutlineShoppingBag className='w-6 h-6 text-gray-700' />
-            <span className='absolute -top-1 bg-[#5b0e14] text-white text-xs rounded-full px-2 py-0.5'>
-              4
-            </span>
-          </button>
+        {/*  Cart  */}
+        <CartDrawer />
           {/* search icon */}
           <div className='overflow-hidden'>
             <SearchBar />
@@ -63,6 +59,7 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
+
     </>
   )
 }
