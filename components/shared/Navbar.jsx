@@ -14,7 +14,7 @@ const Navbar = () => {
       <nav className='container mx-auto flex items-center justify-between py-4 px-6'>
         <div>
           <Link className='text-3xl font-medium' href='/'>
-          <Image src="../../public/images/logo.png" alt='logo-image'  width={32} height={20} />
+   سامان شاپ
           </Link>
         </div>
         <div className='hidden md:flex space-x-6'>
