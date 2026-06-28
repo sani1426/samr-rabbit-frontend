@@ -1,5 +1,5 @@
 
-import { MainContextProvider } from "@/context/MainContext";
+
 import "./globals.css";
 import localFont from 'next/font/local'
 
@@ -18,12 +18,12 @@ export default function RootLayout({ children }) {
       lang="fa" dir="rtl" className={myFont.className}
     >
       <body className="min-h-full flex flex-col">
-        <MainContextProvider>
+
 
           <main>
             {children}
           </main>
-        </MainContextProvider>
+
       </body>
     </html>
   );

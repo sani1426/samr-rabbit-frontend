@@ -1,11 +1,13 @@
+import { MainContextProvider } from "@/context/MainContext";
 import Header from "../../components/shared/Header";
-
 
 export default function MainLayout({ children }) {
   return (
-<>
-<Header />
-{children}
-</>
+    <>
+      <MainContextProvider>
+        <Header />
+        {children}
+      </MainContextProvider>
+    </>
   );
 }
