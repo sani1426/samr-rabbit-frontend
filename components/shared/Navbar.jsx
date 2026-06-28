@@ -1,5 +1,4 @@
 import {
-  HiOutlineShoppingBag,
   HiBars3BottomRight,
   HiOutlineUser
 } from 'react-icons/hi2'

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { IoMdClose } from "react-icons/io"
 
 const CartDrawer = () => {
@@ -22,6 +23,9 @@ const CartDrawer = () => {
         <button onClick={()=>setDrawerOpen(false)}>
         <IoMdClose className="h-6 w-6 text-gray-600" />
         </button>
+      </div>
+      <div className="grow p-4 overflow-y-auto">
+        <h2 className="text-xl font-semibold mb-4">سبد خرید</h2>
       </div>
     </div>
     </>
