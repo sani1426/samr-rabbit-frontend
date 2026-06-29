@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { IoLogoInstagram } from "react-icons/io";
+import { RiTwitterXLine } from "react-icons/ri";
+import { TbBrandMeta } from "react-icons/tb";
 
 const Footer = () => {
   return (
@@ -14,7 +17,7 @@ const Footer = () => {
             ثبت نام کنید و 10 درصد تخفیف بگیرید{" "}
           </p>
 
-          <form className="flex flex-reverse">
+          <form className="flex flex-row-reverse">
             <input
               type="email"
               placeholder="ایمیل خود را وارد کنید"
@@ -58,29 +61,45 @@ const Footer = () => {
 
 {/* support links */}
         <div className="">
-          <h3 className="text-lg text-gray-800 mb-4">فروشگاه</h3>
+          <h3 className="text-lg text-gray-800 mb-4">پشتیبانی</h3>
           <ul className="space-y-2 text-gray-600">
             <li>
               <Link href="#" className="hover:text-gray-600 transition-all">
-                تی شرت مردانه
+                تماس با ما
               </Link>
             </li>
             <li>
               <Link href="#" className="hover:text-gray-600 transition-all">
-                بلوز زنانه
+                درباره ما
               </Link>
             </li>
             <li>
               <Link href="#" className="hover:text-gray-600 transition-all">
-                شلوار مردانه
+                قوانین
               </Link>
             </li>
             <li>
               <Link href="#" className="hover:text-gray-600 transition-all">
-                شلوار زنانه
+                قابلیت ها
               </Link>
             </li>
           </ul>
+        </div>
+
+        {/* follow section */}
+        <div>
+            <h3 className="text-lg text-gray-800 mb-4">ما را دنبال کنید</h3>
+            <div className="flex items-center space-x-4 mb-6">
+                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500">
+                    <TbBrandMeta className="h-6 w-6 "/>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500">
+                    <IoLogoInstagram className="h-6 w-6 "/>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-gray-500">
+                    <RiTwitterXLine className="h-6 w-6 "/>
+                </a>
+            </div>
         </div>
       </div>
     </footer>
