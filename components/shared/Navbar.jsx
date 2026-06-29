@@ -9,7 +9,7 @@ import NavButtons from "../ui/NavButtons";
 const Navbar = () => {
   return (
     <>
-      <nav className="container mx-auto flex items-center justify-between py-4 px-6">
+      <nav className="container fixed mx-auto flex items-center justify-between py-4 px-6">
         <div>
           <Link className="text-3xl font-medium txt-gradient" href="/">
             سامان شاپ
