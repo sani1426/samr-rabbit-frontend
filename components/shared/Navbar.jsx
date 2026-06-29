@@ -11,7 +11,7 @@ const Navbar = () => {
     <>
       <nav className="container mx-auto flex items-center justify-between py-4 px-6">
         <div>
-          <Link className="text-3xl font-medium" href="/">
+          <Link className="text-3xl font-medium txt-gradient" href="/">
             سامان شاپ
           </Link>
         </div>

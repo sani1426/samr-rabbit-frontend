@@ -2,7 +2,10 @@
 
 import "./globals.css";
 import localFont from 'next/font/local'
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
 
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const myFont = localFont({
   src: '../public/font/tanha.ttf',
@@ -15,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="fa" dir="rtl" className={myFont.className}
+      lang="fa" dir="rtl" className={cn(myFont.className, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
 
