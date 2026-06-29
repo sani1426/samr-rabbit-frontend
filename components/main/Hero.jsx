@@ -1,12 +1,16 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image";
 
 const Hero = () => {
   return (
-   <section className="">
-    <Image src="@/public/images/hero-image.png" alt='hero-image' onLoad={blur} className='w-full h-[440px] md:h-[600px] lg:h-[750px] object-cover' />
-   </section>
-  )
-}
+    <section className="">
+      <Image
+        src="@/public/images/hero-image.png"
+        alt="hero-image"
+        className="w-full h-[440px] md:h-[600px] lg:h-[750px] object-cover"
+      />
+      <div className="absolute inset-0 bg-black flex items-center"></div>
+    </section>
+  );
+};
 
-export default Hero
+export default Hero;
