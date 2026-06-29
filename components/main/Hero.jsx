@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section className="">
       <Image
-        src="@/public/images/hero-image.png"
+        src="../../public/images/hero-image.png"
         alt="hero-image"
         className="w-full h-[440px] md:h-[600px] lg:h-[750px] object-cover"
       />
