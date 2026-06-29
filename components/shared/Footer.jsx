@@ -14,7 +14,7 @@ const Footer = () => {
             ثبت نام کنید و 10 درصد تخفیف بگیرید{" "}
           </p>
 
-          <form className="flex">
+          <form className="flex flex-reverse">
             <input
               type="email"
               placeholder="ایمیل خود را وارد کنید"
@@ -29,23 +29,58 @@ const Footer = () => {
             </button>
           </form>
         </div>
-
+{/* shop links */}
         <div className="">
-            <h3 className="text-lg text-gray-800 mb-4">فروشگاه</h3>
-            <ul className="space-y-2 text-gray-600">
-                <li>
-                    <Link href="#" className="hover:text-gray-600 transition-all">تی شرت مردانه</Link>
-                </li>
-                <li>
-                    <Link href="#" className="hover:text-gray-600 transition-all">بلوز زنانه</Link>
-                </li>
-                <li>
-                    <Link href="#" className="hover:text-gray-600 transition-all">شلوار مردانه</Link>
-                </li>
-                <li>
-                    <Link href="#" className="hover:text-gray-600 transition-all">شلوار زنانه</Link>
-                </li>
-            </ul>
+          <h3 className="text-lg text-gray-800 mb-4">فروشگاه</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                تی شرت مردانه
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                بلوز زنانه
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                شلوار مردانه
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                شلوار زنانه
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+{/* support links */}
+        <div className="">
+          <h3 className="text-lg text-gray-800 mb-4">فروشگاه</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                تی شرت مردانه
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                بلوز زنانه
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                شلوار مردانه
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-gray-600 transition-all">
+                شلوار زنانه
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
