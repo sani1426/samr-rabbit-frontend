@@ -2,6 +2,7 @@ import Link from "next/link";
 import { IoLogoInstagram } from "react-icons/io";
 import { RiTwitterXLine } from "react-icons/ri";
 import { TbBrandMeta } from "react-icons/tb";
+import { FiPhoneCall } from "react-icons/fi";
 
 const Footer = () => {
   return (
@@ -100,7 +101,15 @@ const Footer = () => {
                     <RiTwitterXLine className="h-6 w-6 "/>
                 </a>
             </div>
+            <p className="text-gray-500">با ما تماس بگیرید</p>
+            <p className="">
+              <FiPhoneCall className="inline-block mr-2" />
+              0991-431-8174
+            </p>
         </div>
+      </div>
+      <div className="container mx-auto mt-12 px-4 lg:px-0 border-t border-gray-200 pt-6 ">
+        <p className="text-gray-500 text-sm text-center">تمامی حقوق این وبسایت متعلق به آقای سامان کریمی می باشد</p>
       </div>
     </footer>
   );
