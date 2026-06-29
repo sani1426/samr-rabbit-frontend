@@ -10,10 +10,12 @@ const Navbar = () => {
   let scroll = false
   if(window.scrollY > 20) {
     scroll = true
+  }else{
+    scroll = false
   }
   return (
     <>
-      <nav className=" fixed  w-full md:w-[90%] lg:w-[80%] mx-auto flex items-center justify-between back-gradient py-4 px-6">
+      <nav className={`fixed  w-full md:w-[90%] lg:w-[80%] mx-auto flex items-center justify-between back-gradient py-4 px-6 ${scroll ? "rouded-lg" : ""}`}>
         <div>
           <Link className="text-3xl font-medium txt-gradient" href="/">
             سامان شاپ
