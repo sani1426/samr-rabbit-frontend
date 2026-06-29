@@ -8,7 +8,7 @@ const Hero = () => {
         alt="hero-image"
         className="w-full h-[440px] md:h-[600px] lg:h-[750px] object-cover"
       />
-      <div className="absolute inset-0 bg-black flex items-center"></div>
+      <div className="absolute inset-0  flex items-center"></div>
     </section>
   );
 };
