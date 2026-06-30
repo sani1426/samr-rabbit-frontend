@@ -25,6 +25,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 .back-gradient{
     background: linear-gradient(rgba(0,0,0,.3) , rgba(0,0,0,.5));
 }
