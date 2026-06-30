@@ -1,5 +1,5 @@
 import menCollectionImg from "@/public/images/mens-collection.png";
-import womenCollectionImg from "@/public/images/women-collection.jfif";
+import womenCollectionImg from "@/public/images/womens-collection.png";
 import Image from "next/image";
 import Link from "next/link";
 
