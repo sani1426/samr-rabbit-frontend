@@ -15,20 +15,19 @@ const MobileDrawer = () => {
   return (
     <Drawer direction="right">
       <DrawerTrigger asChild>
-        <Button
-          variant="outline"
-          className="capitalizemd:hidden cursor-pointer"
-        >
+        <Button variant="ghost" className="md:hidden cursor-pointer">
           <HiBars3BottomRight className="h-6 w-6 text-gray-700" />
         </Button>
       </DrawerTrigger>
       <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]">
         <DrawerHeader>
-          <DrawerTitle className="text-2xl border-b px-2 py-2 text-right">منو</DrawerTitle>
+          <DrawerTitle className="text-2xl border-b px-2 py-2 text-right">
+            منو
+          </DrawerTitle>
         </DrawerHeader>
         <div className="no-scrollbar overflow-y-auto px-4">
           <nav className="space-y-4">
-            <Link href="/" className="block text-gray-600 hover:text-black ">
+            <Link href="/" className="block text-gray-600 hover:bg-[#b6ff00] ">
               مردانه
             </Link>
             <Link href="/" className="block text-gray-600 hover:text-black ">
