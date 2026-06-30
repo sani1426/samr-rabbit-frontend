@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed  w-full md:w-[90%] lg:w-[80%] mx-auto flex items-center justify-between back-gradient py-4 px-6 `}>
+      <nav className={`container mx-auto flex items-center justify-between back-gradient py-4 px-6 `}>
         <div>
           <Link className="text-3xl font-medium txt-gradient" href="/">
             سامان شاپ
