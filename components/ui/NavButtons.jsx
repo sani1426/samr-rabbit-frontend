@@ -13,9 +13,9 @@ const NavButtons = () => {
         </span>
       </button>
 
-      <button onClick={toggleSideBar} className="md:hidden cursor-pointer">
+      {/* <button onClick={toggleSideBar} className="md:hidden cursor-pointer">
         <HiBars3BottomRight className="h-6 w-6 text-gray-700" />
-      </button>
+      </button> */}
     </>
   );
 }

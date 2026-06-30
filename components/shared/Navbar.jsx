@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
 
 import NavButtons from "../ui/NavButtons";
+import MobileDrawer from "./MobileDrawer";
 
 const Navbar = () => {
 
@@ -52,6 +53,7 @@ const Navbar = () => {
             <SearchBar />
           </div>
           <NavButtons />
+          <MobileDrawer />
         </div>
       </nav>
       <CartDrawer />

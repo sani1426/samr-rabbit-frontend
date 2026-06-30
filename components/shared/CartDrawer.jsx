@@ -1,5 +1,15 @@
 "use client";
-
+// import { Button } from "@/components/ui/button";
+// import {
+//   Drawer,
+//   DrawerClose,
+//   DrawerContent,
+//   DrawerDescription,
+//   DrawerFooter,
+//   DrawerHeader,
+//   DrawerTitle,
+//   DrawerTrigger,
+// } from "@/components/ui/drawer";
 import { useMainContext } from "@/context/MainContext";
 import { IoMdClose } from "react-icons/io";
 import CartContents from "../cart/CartContents";
@@ -9,6 +19,8 @@ const CartDrawer = () => {
   const { draweOpen, toggleCartDrawer,sideBarOpen,toggleSideBar } = useMainContext();
   return (
     <>
+  
+
     <div
       className={`fixed top-0 righ-0 w-3/4 sm:w-1/2 md:w-120 h-full bg-white shadow-lg transform transition-transform duration-300 flex flex-col z-50 ${
         draweOpen ? "translate-x-0" : "translate-x-full"
@@ -34,7 +46,7 @@ const CartDrawer = () => {
       </div>
     </div>
 
-    <div className={`fixed top-0 right-0 w-3/4 sm:w-1/2 md:w-1/3 h-full bg-white shadow-lg transform transition-transform duration-300 z-50 ${sideBarOpen ? "translate-x-0" : "translate-x-full"}`}>
+    {/* <div className={`fixed top-0 right-0 w-3/4 sm:w-1/2 md:w-1/3 h-full bg-white shadow-lg transform transition-transform duration-300 z-50 ${sideBarOpen ? "translate-x-0" : "translate-x-full"}`}>
       <div className="flex justify-end p-4">
         <button onClick={toggleSideBar}><IoMdClose className="h-6 w-6 text-gray-600" /></button>
       </div>
@@ -47,7 +59,7 @@ const CartDrawer = () => {
           <Link href="/" onClick={toggleSideBar} className="block text-gray-600 hover:text-black " >شلوار</Link>
         </nav>
       </div>
-    </div>
+    </div> */}
     </>
   );
 };
