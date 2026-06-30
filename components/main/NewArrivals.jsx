@@ -264,9 +264,32 @@ const NewArrivals = () => {
         container.addEventListener("scroll" , updateScrollButton)
     }
     updateScrollButton()
+    return ()=> container.removeEventListner("scroll" , updateScrollButton)
   },[])
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true)
+    setStartX(e.pageX - scrollRef.current.offsetLeft)
+    setScrollLeft(scrollRef.current.scrollLeft)
+  }
+
+  const handleMouseMove = (e) => {
+    if(!isDragging) return ;
+    const x =e.pageX - scrollRef.current.offsetLeft;
+    const walk = x - startX ;
+    scrollRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  const handleMouseUp = (e) => {
+
+  }
+
+  const handleMouseLeave = (e) =>{
+    setIsDragging(false)
+  }
+
   return (
-    <section>
+    <section className="py-16 px-4 lg:px-0">
       <div className="container mx-auto text-center mb-10 relative">
         <h2 className="text-3xl font-bold mb-4">جدیدترین محصولات</h2>
         <p className="text-lg text-gray-600 mb-8">
@@ -305,7 +328,11 @@ const NewArrivals = () => {
       {/* scrollable content */}
       <div
         ref={scrollRef}
-        className="container mx-auto overflow-x-scroll flex space-x-6 relative"
+        className={`container mx-auto overflow-x-scroll flex space-x-6 relative ${isDragging ? "cursor-grabbing" : "cursor-grap"}`}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
       >
         {newArrivals.map((item, index) => (
           <div
@@ -316,6 +343,7 @@ const NewArrivals = () => {
               src={item.images[0]?.url}
               alt={item.images[0]?.altText}
               className="w-full h-125 object-cover rounded-lg"
+              draggable="false"
             />
             <div className="absolute bottom-0 right-0 left-0 bg-opacity-50 backdrop-blur-md text-white p-4 rounded-b-lg">
               <Link href={`/product/${item._id}`} className="block">
