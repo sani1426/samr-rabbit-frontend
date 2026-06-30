@@ -10,7 +10,7 @@ const Hero = () => {
         alt="hero-image"
         className="w-full h-110 md:h-150 lg:h-187.5 object-cover"
       />
-      <div className="absolute inset-0 bg-black/95  flex items-center justify-center ">
+      <div className="absolute inset-0 bg-black/90  flex items-center justify-center ">
         <div className="text-center text-white p-6">
           <h1 className="text-3xl md:text-7xl font-bold  mb-4">
             استایل خاص ,انتخاب هوشمندانه
@@ -20,7 +20,7 @@ const Hero = () => {
           </p>
           <Link
             href="#"
-            className="bg-[#b6ff00] text-white px-6 py-2 rounded-md text-lg hover:bg-transparent hover:border hover:border-[#b6ff00] hover:text-[#b6ff00] transition-all duration-200 "
+            className=" px-6 py-2 rounded-md text-lg bg-transparent border border-[#b6ff00] text-[#b6ff00] hover:bg-[#b6ff00] hover:text-white transition-all duration-200 "
           >
             محصولات
           </Link>
