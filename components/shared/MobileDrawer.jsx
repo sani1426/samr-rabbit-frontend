@@ -16,7 +16,7 @@ const MobileDrawer = () => {
     <Drawer direction="right">
       <DrawerTrigger asChild>
         <Button variant="ghost" className="md:hidden cursor-pointer">
-          <HiBars3BottomRight className="h-6 w-6 text-gray-700" />
+          <HiBars3BottomRight className="text-2xl text-gray-700" />
         </Button>
       </DrawerTrigger>
       <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh] data-[vaul-drawer-direction=right]:max-w-[50vw]">
@@ -34,24 +34,21 @@ const MobileDrawer = () => {
               >
                 مردانه
               </Link>
-            </DrawerClose>
-            <DrawerClose>
+        
               <Link
                 href="/"
                 className="block text-gray-600 px-4 py-2 rounded-md hover:bg-[#b6ff00] transition-all duration-300 border-b"
               >
                 زنانه
               </Link>
-            </DrawerClose>
-            <DrawerClose>
+      
               <Link
                 href="/"
                 className="block text-gray-600 px-4 py-2 rounded-md hover:bg-[#b6ff00] transition-all duration-300 border-b"
               >
                 پیراهن
               </Link>
-            </DrawerClose>
-            <DrawerClose>
+        
               <Link
                 href="/"
                 className="block text-gray-600 px-4 py-2 rounded-md hover:bg-[#b6ff00] transition-all duration-300 border-b "
