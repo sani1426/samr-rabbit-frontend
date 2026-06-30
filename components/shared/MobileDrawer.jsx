@@ -24,7 +24,7 @@ const MobileDrawer = () => {
       </DrawerTrigger>
       <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]">
         <DrawerHeader>
-          <DrawerTitle>منو</DrawerTitle>
+          <DrawerTitle className="text-2xl border-b px-2 py-2 text-right">منو</DrawerTitle>
         </DrawerHeader>
         <div className="no-scrollbar overflow-y-auto px-4">
           <nav className="space-y-4">
