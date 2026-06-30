@@ -47,7 +47,7 @@ const SearchBar = () => {
         </form>
       ) : (
         <button onClick={() => setIsOpen(!isOpen)}>
-          <HiMagnifyingGlass className='h-6 w-6' />
+          <HiMagnifyingGlass className='h-6 w-6 text-center' />
         </button>
       )}
     </div>

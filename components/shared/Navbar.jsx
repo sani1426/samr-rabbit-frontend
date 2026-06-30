@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`container mx-auto flex items-center justify-between back-gradient py-4 px-6 `}>
+      <nav className={`container mx-auto flex items-center justify-between  py-4 px-6 `}>
         <div>
           <Link className="text-3xl font-medium txt-gradient" href="/">
             سامان شاپ
@@ -49,7 +49,7 @@ const Navbar = () => {
           </Link>
 
           {/* search icon */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden ">
             <SearchBar />
           </div>
           <NavButtons />
