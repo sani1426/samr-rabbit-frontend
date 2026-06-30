@@ -27,7 +27,7 @@ const MobileDrawer = () => {
         </DrawerHeader>
         <div className="no-scrollbar overflow-y-auto px-4">
           <nav className="space-y-4">
-            <DrawerClose>
+    
               <Link
                 href="/"
                 className="block text-gray-600 px-4 py-2 rounded-md hover:bg-[#b6ff00] transition-all duration-300 border-b"
@@ -55,7 +55,7 @@ const MobileDrawer = () => {
               >
                 شلوار
               </Link>
-            </DrawerClose>
+   
           </nav>
         </div>
       </DrawerContent>
