@@ -8,10 +8,10 @@ const Hero = () => {
       <Image
         src={heroImg}
         alt="hero-image"
-        className="w-full h-110 md:h-150 lg:h-187.5 object-cover"
+        className="w-full h-110 md:h-150 lg:h-187.5 object-cover z-[-1]"
       />
       <div className="absolute inset-0 back-gradient z-10 flex items-center justify-center ">
-        <div className="text-center text-white p-6 -mt-9">
+        <div className="text-center text-white p-6 ">
           <h1 className="text-3xl md:text-7xl font-bold  mb-4">
             استایل خاص ,انتخاب هوشمندانه
           </h1>
