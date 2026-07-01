@@ -10,7 +10,7 @@
       category: "Top Wear",
       brand: "Winter Basics",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      colors: ["زغالی", "سبز تیره", "سرمه‌ای"],
+      colors: ["زغالی", "سبز", "سرمه‌ ای"],
       collections: "Winter Essentials",
       material: "Cotton",
       gender: "Men",
@@ -79,6 +79,14 @@ const mapColor = (color) => {
         case "طوسی" :
             return "gray";
             break
+        case "سبز" :
+            return "gray";
+            break
+        case "قهوه ای" :
+            return "gray";
+            break
+            default :
+            return  "yellow";
     }
 };
   return (
