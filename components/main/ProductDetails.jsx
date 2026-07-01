@@ -96,7 +96,7 @@ const ProductDetails = () => {
   return (
     <div className="p-6">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg">
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row gap-4">
           <ShowImage images={selectedProduct.images} />
 
           {/* right section */}
