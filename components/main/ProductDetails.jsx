@@ -137,7 +137,7 @@ const mapColor = (color) => {
                 <div className="flex gap-2 mt-2">
                     {
                         selectedProduct.colors.map((color , index) =>(
-                            <button style={{backgroundColor : mapColor(color)}} key={index} className="w-8 h-8 rounded-full border"></button>
+                            <button style={{backgroundColor : mapColor(color)}} key={index} className="w-8 h-8 rounded-full border">{color}</button>
                         ))
                     }
                 </div>
