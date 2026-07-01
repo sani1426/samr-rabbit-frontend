@@ -20,6 +20,10 @@ const selectedProduct = {
       url: "https://picsum.photos/500/500?random=7",
       altText: "Long-Sleeve Thermal Tee Front View",
     },
+    {
+      url: "https://picsum.photos/500/500?random=9",
+      altText: "Long-Sleeve Thermal Tee Front View",
+    },
   ],
   rating: 4.4,
   numReviews: 18,
