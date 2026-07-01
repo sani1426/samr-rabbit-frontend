@@ -1,16 +1,17 @@
-"use client"
+"use client";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const NewArrivals = () => {
-    const scrollRef = useRef(null)
-    const [isDragging , setIsDragging] = useState(false)
-    const [startX , setStartX] = useState(0)
-    const [scrollLeft , setScrollLeft] = useState(false)
-    const [canScrollRight , setCanScrollRight] = useState(true)
-    const [canScrollLeft , setCanScrollLeft] = useState(false)
   const newArrivals = [
     {
       _id: 1,
@@ -238,56 +239,6 @@ const NewArrivals = () => {
     },
   ];
 
-  const scroll = (direction) => {
-    const scrollAmount = direction === "left" ? -300 : 300
-    scrollRef.current.scrollBy({left : scrollAmount , behaviour : "smooth"})
-  }
-
-  const updateScrollButton = () => {
-        const container = scrollRef.current;
-        if(container){
-            const leftScroll = container.scrollLeft
-            const rightScrollable = container.scrollWidth > leftScroll + container.clientWidth
-            setCanScrollLeft(leftScroll > 0)
-            setCanScrollRight(rightScrollable)
-        }
-        console.log({
-          scrollLeft: container.scrollLeft,
-          clientWidth: container.clientWidth,
-          containerScroolWidth : container.scrollWidth
-        });
-       
-  }
-  useEffect(()=>{
-    const container = scrollRef.current
-    if(container){
-        container.addEventListener("scroll" , updateScrollButton)
-    }
-    updateScrollButton()
-    return ()=> container.removeEventListner("scroll" , updateScrollButton)
-  },[])
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true)
-    setStartX(e.pageX - scrollRef.current.offsetLeft)
-    setScrollLeft(scrollRef.current.scrollLeft)
-  }
-
-  const handleMouseMove = (e) => {
-    if(!isDragging) return ;
-    const x =e.pageX - scrollRef.current.offsetLeft;
-    const walk = x - startX ;
-    scrollRef.current.scrollLeft = scrollLeft - walk
-  }
-
-  const handleMouseUp = (e) => {
-
-  }
-
-  const handleMouseLeave = (e) =>{
-    setIsDragging(false)
-  }
-
   return (
     <section className="py-16 px-4 lg:px-0">
       <div className="container mx-auto text-center mb-10 relative">
@@ -297,63 +248,38 @@ const NewArrivals = () => {
           از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
           سطرآنچنان که لازم است
         </p>
-
-        {/* scroll button */}
-        <div className="absolute right-0 -bottom-7.5 flex space-x-2">
-          <button
-            onClick={() => scroll("left")}
-            disabled={!canScrollLeft}
-            className={`p-2 rounded border ${
-              canScrollLeft
-                ? "bg-white text-black"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
-            }`}
-          >
-            <FiChevronLeft className="text-2xl" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            disabled={!canScrollRight}
-            className={`p-2 rounded border ${
-              canScrollRight
-                ? "bg-white text-black"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
-            }`}
-          >
-            <FiChevronRight className="text-2xl" />
-          </button>
-        </div>
       </div>
 
-      {/* scrollable content */}
-      <div
-        ref={scrollRef}
-        className={`container mx-auto overflow-x-scroll flex space-x-6 relative ${isDragging ? "cursor-grabbing" : "cursor-grap"}`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
+      <Swiper
+        // install Swiper modules
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={50}
+        slidesPerView={4}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log("slide change")}
       >
         {newArrivals.map((item, index) => (
-          <div
-            className="min-w-full sm:min-w-[50%] lg:min-w-[30%] relative"
-            key={index}
-          >
-            <img
-              src={item.images[0]?.url}
-              alt={item.images[0]?.altText}
-              className="w-full h-125 object-cover rounded-lg"
-              draggable="false"
-            />
-            <div className="absolute bottom-0 right-0 left-0 bg-opacity-50 backdrop-blur-md text-white p-4 rounded-b-lg">
-              <Link href={`/product/${item._id}`} className="block">
-                <h4 className="font-medium">{item.name}</h4>
-                <p className="mt-1">${item.price}</p>
-              </Link>
+          <SwiperSlide key={index}>
+            <div className="min-w-full sm:min-w-[50%] lg:min-w-[30%] relative">
+              <img
+                src={item.images[0]?.url}
+                alt={item.images[0]?.altText}
+                className="w-full h-125 object-cover rounded-lg"
+                draggable="false"
+              />
+              <div className="absolute bottom-0 right-0 left-0 bg-opacity-50 backdrop-blur-md text-white p-4 rounded-b-lg">
+                <Link href={`/product/${item._id}`} className="block">
+                  <h4 className="font-medium">{item.name}</h4>
+                  <p className="mt-1">${item.price}</p>
+                </Link>
+              </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </section>
   );
 };
