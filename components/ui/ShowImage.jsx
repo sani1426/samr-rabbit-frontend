@@ -14,7 +14,7 @@ const ShowImage = ({ images }) => {
             src={img.url}
             alt={img?.altText}
             className={`w-20 h-20 object-cover rounded-lg cursor-pointer border ${
-              mainImage == img.url ? "border-blue-600" : "border-black"
+              mainImage == img.url ? "border-blue-600 border-2" : "border-black"
             }`}
           />
         ))}
@@ -39,7 +39,7 @@ const ShowImage = ({ images }) => {
             src={img.url}
             alt={img?.altText}
             className={`w-20 h-20 object-cover rounded-lg cursor-pointer border ${
-              mainImage == img.url ? "border-blue-600" : "border-black"
+              mainImage == img.url ? "border-blue-600 border-2" : "border-black"
             }`}
           />
         ))}
