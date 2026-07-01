@@ -1,3 +1,5 @@
+import ShowImage from "../ui/ShowImage";
+
 const selectedProduct = {
   name: "تیشرت آستین بلند حرارتی (بافت وافلی)",
   description:
@@ -91,38 +93,7 @@ const ProductDetails = () => {
     <div className="p-6">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg">
         <div className="flex flex-col md:flex-row">
-          <div className="hidden md:flex flex-col space-y-4 mr-6">
-            {selectedProduct.images.map((img, index) => (
-              <img
-                key={index}
-                src={img.url}
-                alt={img?.altText}
-                className="w-20 h-20 object-cover rounded-lg cursor-pointer border"
-              />
-            ))}
-          </div>
-
-          {/* main image */}
-          <div className="md:w-1/2">
-            <div className="mb-4">
-              <img
-                src={selectedProduct.images[0].url}
-                alt=""
-                className="w-full h-auto object-cover rounded-lg"
-              />
-            </div>
-          </div>
-          {/* mobile thumbnail */}
-          <div className="md:hidden flex overscroll-x-auto space-x-4 mb-4 ">
-            {selectedProduct.images.map((img, index) => (
-              <img
-                key={index}
-                src={img.url}
-                alt={img?.altText}
-                className="w-20 h-20 object-cover rounded-lg cursor-pointer border"
-              />
-            ))}
-          </div>
+          <ShowImage images={selectedProduct.images} />
 
           {/* right section */}
           <div className="md:w-1/2 md:ml-10">
