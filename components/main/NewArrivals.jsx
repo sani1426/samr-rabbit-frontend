@@ -240,7 +240,7 @@ const NewArrivals = () => {
   ];
 
   return (
-    <section className="py-16 px-4 lg:px-0">
+    <section className="py-16 px-4 md:px-8 lg:px-12">
       <div className="container mx-auto text-center mb-10 relative">
         <h2 className="text-3xl font-bold mb-4">جدیدترین محصولات</h2>
         <p className="text-lg text-gray-600 mb-8">
@@ -251,15 +251,31 @@ const NewArrivals = () => {
       </div>
 
       <Swiper
-        // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
-        slidesPerView={4}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 40,
+          },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+        }}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        className="mb-12"
       >
         {newArrivals.map((item, index) => (
           <SwiperSlide key={index}>
