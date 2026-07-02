@@ -229,7 +229,7 @@ const HomePage = () => {
   </div>
   <FeaturedCollection />
   <FeatureSection />
-  <Svg />
+
   </>
   )
 }
