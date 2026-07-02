@@ -1,3 +1,4 @@
+import FeatureSection from "@/components/main/FeatureSection"
 import FeaturedCollection from "@/components/main/FeaturedCollection"
 import GenderCollectionSection from "@/components/main/GenderCollectionSection"
 import Hero from "@/components/main/Hero"
@@ -226,6 +227,7 @@ const HomePage = () => {
     <ProductGrid products={placeholderProducts}/>
   </div>
   <FeaturedCollection />
+  <FeatureSection />
   </>
   )
 }
