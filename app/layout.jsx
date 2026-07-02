@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from 'next/font/local'
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Toaster } from "sonner";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -18,15 +19,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="fa" dir="rtl" className={cn(myFont.className, "font-sans", inter.variable)}
+      lang="fa"
+      dir="rtl"
+      className={cn(myFont.className, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
-
-
-          <main>
-            {children}
-          </main>
-
+        <main>{children}</main>
+        <Toaster position="top-right" richColors={true} />
       </body>
     </html>
   );
