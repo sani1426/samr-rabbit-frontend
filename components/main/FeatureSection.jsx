@@ -7,7 +7,7 @@ const FeatureSection = () => {
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="flex flex-col items-center ">
                 <div className="p-4 rounded-full mb-4">
-                    <HiShoppingBag className="text-xl" />
+                    <HiShoppingBag className="text-2xl" />
                 </div>
                 <h4 className="tracking-tighter">ارسال رایگان</h4>
                 <p className="text-gray-600 text-sm tracking-tighter">
@@ -16,7 +16,7 @@ const FeatureSection = () => {
             </div>
             <div className="flex flex-col items-center ">
                 <div className="p-4 rounded-full mb-4">
-                    <HiArrowPathRoundedSquare className="text-xl" />
+                    <HiArrowPathRoundedSquare className="text-2xl" />
                 </div>
                 <h4 className="tracking-tighter">10 روز مهلت تست</h4>
                 <p className="text-gray-600 text-sm tracking-tighter">
@@ -25,7 +25,7 @@ const FeatureSection = () => {
             </div>
             <div className="flex flex-col items-center ">
                 <div className="p-4 rounded-full mb-4">
-                    <HiOutlineCreditCard className="text-xl" />
+                    <HiOutlineCreditCard className="text-2xl" />
                 </div>
                 <h4 className="tracking-tighter">خرید امن</h4>
                 <p className="text-gray-600 text-sm tracking-tighter">
