@@ -1,3 +1,4 @@
+import FeaturedCollection from "@/components/main/FeaturedCollection"
 import GenderCollectionSection from "@/components/main/GenderCollectionSection"
 import Hero from "@/components/main/Hero"
 import NewArrivals from "@/components/main/NewArrivals"
@@ -224,6 +225,7 @@ const HomePage = () => {
     <h2 className="text-3xl text-center font-bold mb-4">زنانه های پر طرفدار</h2>
     <ProductGrid products={placeholderProducts}/>
   </div>
+  <FeaturedCollection />
   </>
   )
 }
