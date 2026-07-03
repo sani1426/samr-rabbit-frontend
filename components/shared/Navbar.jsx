@@ -19,13 +19,13 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex space-x-6">
           <Link
-            href=""
+            href="/collection/men"
             className="text-gray-700 hover:text-black text-sm font-medium"
           >
             مردانه
           </Link>
           <Link
-            href=""
+            href="collection/women"
             className="text-gray-700 hover:text-black text-sm font-medium"
           >
             زنانه
