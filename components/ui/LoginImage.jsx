@@ -10,7 +10,7 @@ const LoginImage = () => {
         alt="a modern tablet login interface displayed among decorative plants and a colorful background tablet login customizable semi flat illustration"
         fetchpriority="high"
         sizes="(max-width: 480px) 100vw, (min-aspect-ratio: 626/417) 100%, (max-width: 1024px) calc(100vw - 40px), calc(100vw - 540px)"
-        className="h-187.5 w-full object-cover"
+        className="h-150 w-full object-cover"
       />
   )
 }
