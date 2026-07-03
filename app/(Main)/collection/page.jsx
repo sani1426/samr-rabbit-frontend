@@ -363,14 +363,14 @@ const page = () => {
         }, 1000);
     },[])
   return (
-    <div className="flex flex-col lg:flex-row overflow-hidden">
+    <div className="flex flex-col lg:flex-row ">
         {/* mobile Filter button */}
         <button onClick={toggleSidebar} className="lg:hidden border p-2 flex justify-center items-center">
             <FaFilter className="ml-2" /> فیلترها
         </button>
 
         {/* filter Sidebar */}
-        <div ref={sidebarRef} className={`${isSidebarOpen ? "translate-x-0" :"-translate-x-full"}`}>
+        <div ref={sidebarRef} className={`${isSidebarOpen ? "translate-x-0" :"translate-x-full"}`}>
             <FilterSideBar />
         </div>
     </div>
