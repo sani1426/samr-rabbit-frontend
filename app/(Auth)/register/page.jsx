@@ -1,6 +1,6 @@
 "use client";
 
-import LoginImage from "@/components/ui/LoginImage";
+import RegisterImage from "@/components/ui/RegisterImage";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -10,24 +10,20 @@ const page = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
   return (
     <div className="flex">
-      <div className="hidden md:block w-1/2 bg-gray-800">
-        <div className="h-full flex flex-col justify-center items-center">
-          <LoginImage />
-        </div>
-      </div>
       <div className="w-full md:w-1/2 flex-col justify-center items-center p-8 md:p-12">
-        <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-lg border shadow-sm">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-white p-8 rounded-lg border shadow-sm"
+        >
           <div className="flex justify-center mb-6">
             <h2 className="text-xl font-medium">سامان شاپ</h2>
           </div>
           <h2 className="text-2xl font-bold text-center mb-6">سلام ! </h2>
-          <p className="text-center mb-6">
-           اطلاعات خود را وارد و ثبت نام کنید
-          </p>
+          <p className="text-center mb-6">اطلاعات خود را وارد و ثبت نام کنید</p>
           <div className="mb-4">
             <label htmlFor="" className="block text-sm font-semibold mb-2">
               نام و نام خانوادگی
@@ -71,12 +67,17 @@ const page = () => {
             ثبت نام
           </button>
           <p className="mt-6 text-center text-sm">
-            قبلا ثبت نام کرده اید؟ {" "}
+            قبلا ثبت نام کرده اید؟{" "}
             <Link href="/login" className="text-blue-600 text-lg">
-             ورود
+              ورود
             </Link>
           </p>
         </form>
+      </div>
+      <div className="hidden md:block w-1/2 bg-gray-800">
+        <div className="h-full flex flex-col justify-center items-center">
+          <RegisterImage />
+        </div>
       </div>
     </div>
   );
