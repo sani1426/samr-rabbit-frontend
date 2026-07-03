@@ -1,6 +1,7 @@
 "use client";
 
-import RegisterImage from "@/components/ui/RegisterImage";
+import LoginImage from "@/components/ui/LoginImage";
+
 import Link from "next/link";
 import { useState } from "react";
 
@@ -12,7 +13,7 @@ const page = () => {
     <div className="flex">
       <div className="hidden md:block w-1/2 bg-gray-800">
         <div className="h-full flex flex-col justify-center items-center">
-          <RegisterImage />
+          <LoginImage />
         </div>
       </div>
       <div className="w-full md:w-1/2 flex-col justify-center items-center p-8 md:p-12">
@@ -68,8 +69,8 @@ const page = () => {
           </button>
           <p className="mt-6 text-center text-sm">
             قبلا ثبت نام کرده اید؟ {" "}
-            <Link href="/login" className="text-blue-600">
-              ورد
+            <Link href="/login" className="text-blue-600 text-lg">
+             ورود
             </Link>
           </p>
         </form>
