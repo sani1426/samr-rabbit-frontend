@@ -12,13 +12,14 @@ const page = () => {
     const handleClickOutside = (e) => {
         if(sidebarRef.current && !sidebarRef.current.contains(e.target)){
             setIsSidebarOpen(false)
+            console.log(isSidebarOpen);
         }
     };
     useEffect(()=> {
         document.addEventListener("mousedown" , handleClickOutside)
         // clean event listener //
         document.removeEventListener("mousedown" , handleClickOutside)
-    } , [])
+    } )
     useEffect(()=>{
         setTimeout(() => {
             const fetchProducts = [
