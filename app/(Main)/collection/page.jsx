@@ -1,6 +1,8 @@
 "use client"
 
+import ProductGrid from "@/components/main/ProductGrid"
 import FilterSideBar from "@/components/shared/FilterSideBar"
+import SortOptions from "@/components/shared/SortOptions"
 import { useEffect, useRef, useState } from "react"
 import {FaFilter} from "react-icons/fa"
 
@@ -10,15 +12,15 @@ const page = () => {
     const [isSidebarOpen , setIsSidebarOpen]=useState(false)
     const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
     const handleClickOutside = (e) => {
-        if(sidebarRef.current && !sidebarRef.current.contains(e.target)){
+        if(sidebarRef.current  &&  !sidebarRef.current.contains(e.target)){
             setIsSidebarOpen(false)
             console.log(isSidebarOpen);
         }
     };
     useEffect(()=> {
-        document.addEventListener("mousedown" , handleClickOutside)
+        document.addEventListener("mousedown" , handleClickOutside);
         // clean event listener //
-        document.removeEventListener("mousedown" , handleClickOutside)
+        document.removeEventListener("mousedown" , handleClickOutside);
     } )
     useEffect(()=>{
         setTimeout(() => {
@@ -371,8 +373,17 @@ const page = () => {
         </button>
 
         {/* filter Sidebar */}
-        <div ref={sidebarRef} className={`${isSidebarOpen ? "translate-x-0" :"translate-x-full"}`}>
+        <div ref={sidebarRef} className={`${isSidebarOpen ? "translate-x-0" :"translate-x-full"} fixed inset-y-0 z-50 right-0 w-64 bg-white overflow-y-auto transition-transform duration-300 lg:static lg:translate-x-0`}>
             <FilterSideBar />
+        </div>
+        <div className="grow p-4">
+            <h2 className="text-2xl mb-4">همه ی محصولات</h2>
+
+            {/*sort ... */}
+            <SortOptions />
+
+            {/* products grid */}
+            <ProductGrid products={products} />
         </div>
     </div>
   )
