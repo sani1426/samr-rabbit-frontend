@@ -1,6 +1,7 @@
 "use client"
 
 import LoginImage from "@/components/ui/LoginImage"
+import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -23,7 +24,7 @@ const page = () => {
     </p>
     <div className="mb-4">
       <label htmlFor="" className="block text-sm font-semibold mb-2">ایمیل</label>
-      <input type="email" className="w-full p-2 border rounded" onChange={(e)=> setEmail(e.target.value)} value={email} placeholder="ایمیل خود را وارد کنید" />
+      <Input required type="email" onChange={(e)=> setEmail(e.target.value)} value={email} placeholder="ایمیل خود را وارد کنید" />
     </div>
     <div className="mb-4">
       <label htmlFor="" className="block text-sm font-semibold mb-2">رمز عبور</label>
