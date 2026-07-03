@@ -1,6 +1,7 @@
 "use client";
 
-import RegisterImage from "@/components/ui/RegisterImage";
+import LoginImage from "@/components/ui/LoginImage";
+
 
 import Link from "next/link";
 import { useState } from "react";
@@ -76,7 +77,7 @@ const page = () => {
       </div>
       <div className="hidden md:block w-1/2 bg-gray-800">
         <div className="h-full flex flex-col justify-center items-center">
-          <RegisterImage />
+          <LoginImage />
         </div>
       </div>
     </div>
