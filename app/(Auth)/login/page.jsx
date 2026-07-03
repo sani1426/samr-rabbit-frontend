@@ -16,7 +16,7 @@ const page = () => {
     </div>
     <h2 className="text-2xl font-bold text-center mb-6">سلام ! </h2>
     <p className="text-center mb-6">
-      نام کاربری و رمز عبور خود را وارد کنید 
+      ایمیل و رمز عبور خود را وارد کنید
     </p>
     <div className="mb-4">
       <label htmlFor="" className="block text-sm font-semibold mb-2">ایمیل</label>

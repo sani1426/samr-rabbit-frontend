@@ -10,7 +10,7 @@ const RegisterImage = () => {
       alt="secure desktop computer with unlocked password bubble"
       fetchpriority="high"
       sizes="(max-width: 480px) 100vw, (min-aspect-ratio: 626/351) 100%, (max-width: 1024px) calc(100vw - 40px), calc(100vw - 540px)"
-      class="size-full object-contain sm:rounded-xl"
+      className="h-150 w-full object-cover"
     />
   );
 }
