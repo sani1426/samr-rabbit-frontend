@@ -5,7 +5,7 @@ import Hero from "@/components/main/Hero"
 import NewArrivals from "@/components/main/NewArrivals"
 import ProductDetails from "@/components/main/ProductDetails"
 import ProductGrid from "@/components/main/ProductGrid"
-import Svg from "@/components/ui/svg"
+import Svg from "@/components/ui/LoginImage"
 
 const placeholderProducts = [
   {
