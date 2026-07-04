@@ -1,14 +1,13 @@
-"use client"
+"use client";
 
+import { mapColor, mapMaterial } from "@/utils/AppUtility";
+import { useSearchParams, useNavigate } from "next/navigation";
 
-import { mapMaterial } from "@/utils/AppUtility"
-import { useSearchParams } from "next/navigation";
-
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react";
 
 const FilterSideBar = () => {
-
-  const searchingParams = useSearchParams();
+  const [searchingParams , setSearchingParams] = useSearchParams();
+  const navigate = useNavigate()
   const [filter, setFilter] = useState({
     category: "",
     gender: "",
@@ -70,21 +69,33 @@ const FilterSideBar = () => {
 
   const handleFilterChange = (e) => {
     const { name, value, checked, type } = e.target;
-    let newFilters = {...filter}
-    if(type === "checkbox"){
-      if(checked){
-        newFilters[name] = [...(newFilters[name] || []) , value]
-      }else{
-        newFilters[name] = newFilters[name].filter((item)=> item !== value)
+    let newFilters = { ...filter };
+    if (type === "checkbox") {
+      if (checked) {
+        newFilters[name] = [...(newFilters[name] || []), value];
+      } else {
+        newFilters[name] = newFilters[name].filter((item) => item !== value);
       }
-    }else{
+    } else {
       newFilters[name] = value;
     }
-    setFilter(newFilters)
-    console.log(filter);
+    setFilter(newFilters);
+    updateUrl(newFilters)
   };
 
- 
+  const updateUrl = (newFilters) => {
+    const params = new URLSearchParams()
+    Object.keys(newFilters).forEach((key) => {
+      if(Array.isArray(newFilters[key]) && newFilters[key].length > o) {
+        params.append(key , newFilters[key].join(","))
+      }else if(newFilters[key]) {
+        params.append(key , newFilters[key])
+      }
+    })
+    setSearchingParams(params)
+    navigate(`?${params.toString()}`)
+  }
+
   return (
     <div className="p-4">
       <h3 className="text-xl font-medium text-gray-800 mb-4">فیلتر</h3>
@@ -137,8 +148,8 @@ const FilterSideBar = () => {
               className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105"
               style={{ backgroundColor: col.toLowerCase() }}
               name="color"
-              value={col}
-              onChange={handleFilterChange}
+              value={mapColor(col)}
+              onClick={handleFilterChange}
             ></button>
           ))}
         </div>
