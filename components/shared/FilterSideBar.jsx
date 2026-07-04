@@ -84,7 +84,7 @@ const FilterSideBar = () => {
           دسته بندی
         </label>
         {categories.map((cat, index) => (
-          <div key={index} className="flex items-center mb-1">
+          <div key={index} className="flex items-center mb-1 gap-1">
             <input
               type="radio"
               name="category"
@@ -102,7 +102,7 @@ const FilterSideBar = () => {
       <div className="mb-6">
         <label className="block text-gray-600 font-medium mb-2">جنسیت</label>
         {genders.map((gen, index) => (
-          <div key={index} className="flex items-center mb-1">
+          <div key={index} className="flex items-center mb-1 gap-1">
             <input
               type="radio"
               name="gender"
@@ -138,7 +138,7 @@ const FilterSideBar = () => {
       <div className="mb-6">
         <label className="block text-gray-600 font-medium mb-2">سایز</label>
         {sizes.map((siz, index) => (
-          <div className="flex items-center mb-1" key={index}>
+          <div className="flex items-center mb-1 gap-1" key={index}>
             <input
               type="checkbox"
               name="size"
@@ -155,7 +155,7 @@ const FilterSideBar = () => {
       <div className="mb-6">
         <label className="block text-gray-600 font-medium mb-2">متریال</label>
         {materials.map((mat, index) => (
-          <div className="flex items-center mb-1" key={index}>
+          <div className="flex items-center mb-1 gap-1" key={index}>
             <input
               type="checkbox"
               name="material"
@@ -171,7 +171,7 @@ const FilterSideBar = () => {
       <div className="mb-6">
         <label className="block text-gray-600 font-medium mb-2">برند</label>
         {brands.map((bra, index) => (
-          <div className="flex items-center mb-1" key={index}>
+          <div className="flex items-center mb-1 gap-1" key={index}>
             <input
               type="checkbox"
               name="brand"
