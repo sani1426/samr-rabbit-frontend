@@ -1,7 +1,8 @@
 "use client"
 
 import ProductGrid from "@/components/main/ProductGrid"
-import FilterSideBar from "@/components/shared/FilterSidebar";
+import FilterSideBar from "@/components/shared/FilterSidebar"
+
 
 import SortOptions from "@/components/shared/SortOptions"
 import { useEffect, useRef, useState } from "react"
@@ -383,7 +384,7 @@ const page = () => {
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         } fixed inset-y-0 z-50 right-0 w-64 bg-white overflow-y-auto transition-transform duration-300 lg:static lg:translate-x-0`}
       >
-        <FilterSideBar />
+      <FilterSideBar />
       </div>
       <div className="grow p-4">
         <h2 className="text-2xl mb-4">همه ی محصولات</h2>
