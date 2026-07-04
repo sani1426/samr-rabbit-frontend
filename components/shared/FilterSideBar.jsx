@@ -148,8 +148,8 @@ const FilterSideBar = () => {
               className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105"
               style={{ backgroundColor: col.toLowerCase() }}
               name="color"
-              value={mapColor(col)}
-              // onClick={(e)=> handleFilterChange(e)}
+              value={col}
+              onClick={(e)=> handleFilterChange(e)}
             ></button>
           ))}
         </div>
