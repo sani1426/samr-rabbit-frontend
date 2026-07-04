@@ -5,10 +5,12 @@ import Filter from "./Filter"
 
 const FilterSideBar = () => {
   return (
-    <Suspense>
+    <>
+      <Suspense fallback={<h1>loading...</h1>}>
         <Filter />
-    </Suspense>
-  )
+      </Suspense>
+    </>
+  );
 }
 
 export default FilterSideBar
