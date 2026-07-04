@@ -1,13 +1,13 @@
 "use client";
 
 import { mapColor, mapMaterial } from "@/utils/AppUtility";
-import { useSearchParams, useNavigate } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 
 const FilterSideBar = () => {
   const [searchingParams , setSearchingParams] = useSearchParams();
-  const navigate = useNavigate()
+  const navigate = useRouter()
   const [filter, setFilter] = useState({
     category: "",
     gender: "",
