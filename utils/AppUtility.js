@@ -61,3 +61,33 @@ export const mapColor = (color) => {
       return "yellow";
   }
 };
+
+
+export const mapMaterial = (material) => {
+  switch (material) {
+    case "Cotton":
+      return "پنبه";
+      break;
+    case "Wool":
+      return "پشم";
+      break;
+    case "Denim":
+      return "جین";
+      break;
+    case "Polyester":
+      return "پلی‌استر";
+      break;
+    case "Silk":
+      return "ابریشم";
+      break;
+    case "Linen":
+      return "کتان";
+      break;
+    case "Viscose":
+      return "ویسکوز";
+      break;
+    case "Fleece":
+      return "پشم نرم";
+      break;
+  }
+}
