@@ -86,7 +86,7 @@ const FilterSideBar = () => {
   const updateUrl = (newFilters) => {
     const params = new URLSearchParams()
     Object.keys(newFilters).forEach((key) => {
-      if(Array.isArray(newFilters[key]) && newFilters[key].length > o) {
+      if(Array.isArray(newFilters[key]) && newFilters[key].length > 0) {
         params.append(key , newFilters[key].join(","))
       }else if(newFilters[key]) {
         params.append(key , newFilters[key])
