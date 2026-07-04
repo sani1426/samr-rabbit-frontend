@@ -2,52 +2,74 @@
 
 
 import { mapMaterial } from "@/utils/AppUtility"
-import { useSearchParams } from "next/navigation"
-import {useEffect, useState} from "react"
 
-const FilterSideBar = () => {
-    const [searchParams , setSearchParams] = useSearchParams()
-    const [filter , setFilter] = useState({
-      category : "" ,
-      gender : "" ,
-      color : "" ,
-      size : [] ,
-      brand : [],
-      material : [] ,
-      minPrice : 0 ,
-      maxPrice : 100 ,
-    })
-    const [priceeRange , setPriceRange] = useState(0 , 100)
-    const categories = ["Top Wear" , "Bottom Wear"]
-    const colors = [
-      "Red" , "Blue" , "Black" , "Green" ,"Yellow" ,"Gray" ,"White" ,"Pink" ,"Beige" , "Navy"
-    ]
-    const sizes = ["XS" , "S" , "M" ,"L" ,"XL" , "XXL"]
-    const materials = [
-      "Cotton" , "Wool" , "Denim" ,"Polyester" , "Silk" ,"Linen" , "Viscose" ,"Fleece"
-    ]
-    const brands = [
-      "Urban Threads" ,"Modern Fit" ,"Street Style" ,"Beach Breeze" , "Fashionista","ChicStyle"    ]
-      const genders = ["Men" , "Women"]
-      useEffect(()=>{
-        const params = Object.fromEntries([...searchParams])
-        setFilter({
-          category : params.category || "" ,
-          gender : params.gender || "" ,
-          color : params.color || "" ,
-          size : params.size ? params.size.split(",") :  [] ,
-          material : params.material ? params.material.split(",") :  [] ,
-          brand: params.brand ? params.brand.split(",") :  [] ,
-          minPrice : params.minPrice || 0 ,
-          maxPrice : params.maxPrice || 100
-        })
-        setPriceRange([0 , params.maxPrice || 100])
-      },[searchParams])
+import {useEffect, useState,use} from "react"
 
-      const handleFilterChange = (e) => {
-        const  {name , value , checked , type} = e.target;
-        console.log({name, value, checked, type});
-      }
+const FilterSideBar = ({ searchParams }) => {
+  const [searchParams, setSearchParams] = use(searchParams);
+  const [filter, setFilter] = useState({
+    category: "",
+    gender: "",
+    color: "",
+    size: [],
+    brand: [],
+    material: [],
+    minPrice: 0,
+    maxPrice: 100,
+  });
+  const [priceeRange, setPriceRange] = useState(0, 100);
+  const categories = ["Top Wear", "Bottom Wear"];
+  const colors = [
+    "Red",
+    "Blue",
+    "Black",
+    "Green",
+    "Yellow",
+    "Gray",
+    "White",
+    "Pink",
+    "Beige",
+    "Navy",
+  ];
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
+  const materials = [
+    "Cotton",
+    "Wool",
+    "Denim",
+    "Polyester",
+    "Silk",
+    "Linen",
+    "Viscose",
+    "Fleece",
+  ];
+  const brands = [
+    "Urban Threads",
+    "Modern Fit",
+    "Street Style",
+    "Beach Breeze",
+    "Fashionista",
+    "ChicStyle",
+  ];
+  const genders = ["Men", "Women"];
+  useEffect(() => {
+    const params = Object.fromEntries([...searchParams]);
+    setFilter({
+      category: params.category || "",
+      gender: params.gender || "",
+      color: params.color || "",
+      size: params.size ? params.size.split(",") : [],
+      material: params.material ? params.material.split(",") : [],
+      brand: params.brand ? params.brand.split(",") : [],
+      minPrice: params.minPrice || 0,
+      maxPrice: params.maxPrice || 100,
+    });
+    setPriceRange([0, params.maxPrice || 100]);
+  }, [searchParams]);
+
+  const handleFilterChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    console.log({ name, value, checked, type });
+  };
   return (
     <div className="p-4">
       <h3 className="text-xl font-medium text-gray-800 mb-4">فیلتر</h3>
@@ -177,6 +199,6 @@ const FilterSideBar = () => {
       </div>
     </div>
   );
-}
+};
 
 export default FilterSideBar
