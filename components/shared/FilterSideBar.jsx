@@ -6,7 +6,7 @@ import { mapMaterial } from "@/utils/AppUtility"
 import {useEffect, useState,use} from "react"
 
 const FilterSideBar = ({ searchParams }) => {
-  const [searchingParams, setSearchingParams] = use(searchParams);
+  const searchingParams = use(searchParams);
   const [filter, setFilter] = useState({
     category: "",
     gender: "",
