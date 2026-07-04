@@ -83,18 +83,7 @@ const FilterSideBar = () => {
     updateUrl(newFilters)
   };
 
-  const updateUrl = (newFilters) => {
-    const params = new URLSearchParams()
-    Object.keys(newFilters).forEach((key) => {
-      if(Array.isArray(newFilters[key]) && newFilters[key].length > 0) {
-        params.append(key , newFilters[key].join(","))
-      }else if(newFilters[key]) {
-        params.append(key , newFilters[key])
-      }
-    })
-    setSearchingParams(params)
-    router.push(`?${params.toString()}`)
-  }
+ 
 
   return (
     <div className="p-4">
