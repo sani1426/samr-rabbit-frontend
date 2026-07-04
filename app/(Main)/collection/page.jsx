@@ -1,7 +1,7 @@
 "use client"
 
 import ProductGrid from "@/components/main/ProductGrid"
-import FilterSideBar from "@/components/shared/FilterSidebar"
+import FilterSideBar from "@/components/shared/FilterSidebar";
 
 import SortOptions from "@/components/shared/SortOptions"
 import { useEffect, useRef, useState } from "react"
