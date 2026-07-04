@@ -2,11 +2,13 @@
 
 
 import { mapMaterial } from "@/utils/AppUtility"
-
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import {useEffect, useState,use} from "react"
 
-const FilterSideBar = ({ searchParams }) => {
-  const searchingParams = use(searchParams);
+const FilterSideBar = () => {
+  const router = useRouter()
+  const searchingParams = useSearchParams();
   const [filter, setFilter] = useState({
     category: "",
     gender: "",
@@ -64,12 +66,16 @@ const FilterSideBar = ({ searchParams }) => {
       maxPrice: params.maxPrice || 100,
     });
     setPriceRange([0, params.maxPrice || 100]);
-  }, [searchParams]);
+  }, [searchingParams]);
 
   const handleFilterChange = (e) => {
     const { name, value, checked, type } = e.target;
     console.log({ name, value, checked, type });
   };
+    if (router.isFallback) {
+      return <div>Loading...</div>;
+    }
+ 
   return (
     <div className="p-4">
       <h3 className="text-xl font-medium text-gray-800 mb-4">فیلتر</h3>
