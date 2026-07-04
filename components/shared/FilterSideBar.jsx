@@ -3,7 +3,7 @@
 
 import { mapMaterial } from "@/utils/AppUtility"
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import {useEffect, useState,use} from "react"
 
 const FilterSideBar = () => {
