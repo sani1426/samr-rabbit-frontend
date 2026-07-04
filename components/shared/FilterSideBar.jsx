@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const FilterSideBar = () => {
   const [searchingParams , setSearchingParams] = useSearchParams();
-  const navigate = useRouter()
+  const router = useRouter()
   const [filter, setFilter] = useState({
     category: "",
     gender: "",
@@ -93,7 +93,7 @@ const FilterSideBar = () => {
       }
     })
     setSearchingParams(params)
-    navigate(`?${params.toString()}`)
+    router.push(`?${params.toString()}`)
   }
 
   return (
