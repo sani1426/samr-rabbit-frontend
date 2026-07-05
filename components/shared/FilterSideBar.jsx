@@ -1,6 +1,6 @@
 "use client";
 
-import { mapColor, mapMaterial } from "@/utils/AppUtility";
+import { mapMaterial } from "@/utils/AppUtility";
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
@@ -150,7 +150,7 @@ router.push(`?${params.toString()}`)
               style={{ backgroundColor: col.toLowerCase() }}
               name="color"
               value={col}
-              // onClick={(e)=> handleFilterChange(e)}
+              onClick={handleFilterChange}
             ></button>
           ))}
         </div>
