@@ -220,7 +220,7 @@ router.push(`?${params.toString()}`)
         />
         <div className="flex justify-between text-gray-600 mt-2">
           <span className="$0"></span>
-          <span className="">${priceeRange[1]}</span>
+          <span className="">${priceRange[1]}</span>
         </div>
       </div>
     </div>
