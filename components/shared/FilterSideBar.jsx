@@ -18,7 +18,7 @@ const FilterSideBar = () => {
     minPrice: 0,
     maxPrice: 100,
   });
-  const [priceeRange, setPriceRange] = useState(0, 100);
+  const [priceRange, setPriceRange] = useState(0, 100);
   const categories = ["Top Wear", "Bottom Wear"];
   const colors = [
     "Red",
@@ -82,7 +82,18 @@ const FilterSideBar = () => {
     setFilter(newFilters);
     updateUrl(newFilters)
   };
-
+const updateUrl = (newFilters) => {
+const params = new URLSearchParams()
+Object.keys(newFilters).forEach((key) => {
+  if(Array.isArray(newFilters[key]) &&  newFilters[key].length > 0) {
+    params.append(key, newFilters[key].join(","))
+  }else if(newFilters[key]) {
+    params.append(key , newFilters[key])
+  }
+})
+setSearchingParams(params)
+router.push(`?${params.toString()}`)
+}
  
 
   return (
