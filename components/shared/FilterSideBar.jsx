@@ -95,7 +95,13 @@ Object.keys(newFilters).forEach((key) => {
 setSearchingParams(params)
 router.push(`?${params.toString()}`)
 }
- 
+ const handlePriceChange = (event) => {
+const newPrice = event.target.value;
+setPriceRange([0,newPrice])
+const newFilters = {...filter , minPrice : 0 , maxPrice : newPrice}
+setFilter(newFilters)
+updateUrl(newFilters)
+ }
 
   return (
     <div className="p-4">
@@ -113,6 +119,7 @@ router.push(`?${params.toString()}`)
               name="category"
               value={cat}
               onChange={handleFilterChange}
+              checked={filter.category === cat}
               className="mr-2 h-4 w-4 text-blue-400 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">
@@ -131,6 +138,7 @@ router.push(`?${params.toString()}`)
               name="gender"
               value={gen}
               onChange={handleFilterChange}
+              checked={filter.gender === gen}
               className="mr-2 h-4 w-4 text-blue-400 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">
@@ -146,7 +154,9 @@ router.push(`?${params.toString()}`)
           {colors.map((col, index) => (
             <button
               key={index}
-              className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105"
+              className={`w-8 h-8 rounded-full border border-gray-300 cursor-pointer transition hover:scale-105 ${
+                filter.color === col ? "ring-2 ring-blue-500" : ""
+              }`}
               style={{ backgroundColor: col.toLowerCase() }}
               name="color"
               value={col}
@@ -167,6 +177,7 @@ router.push(`?${params.toString()}`)
               name="size"
               value={siz}
               onChange={handleFilterChange}
+              checked={filter.size.includes(siz)}
               className="ml-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{siz}</span>
@@ -184,6 +195,7 @@ router.push(`?${params.toString()}`)
               name="material"
               value={mat}
               onChange={handleFilterChange}
+              checked={filter.material.includes(mat)}
               className="ml-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{mapMaterial(mat)}</span>
@@ -200,6 +212,7 @@ router.push(`?${params.toString()}`)
               name="brand"
               value={bra}
               onChange={handleFilterChange}
+              checked={filter.brand.includes(bra)}
               className="ml-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{bra}</span>
@@ -217,6 +230,8 @@ router.push(`?${params.toString()}`)
           name="priceRange"
           min={0}
           max={100}
+          value={priceRange[1]}
+          onChange={handlePriceChange}
           className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
         />
         <div className="flex justify-between text-gray-600 mt-2">
