@@ -6,9 +6,9 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const FilterSideBar = () => {
- let searchParams = useSearchParams()
- const [searchingParams , setSearchingParams] = useState(searchParams)
-  const router = useRouter()
+  let searchParams = useSearchParams();
+  const [searchingParams, setSearchingParams] = useState(searchParams);
+  const router = useRouter();
   const [filter, setFilter] = useState({
     category: "",
     gender: "",
@@ -81,27 +81,27 @@ const FilterSideBar = () => {
       newFilters[name] = value;
     }
     setFilter(newFilters);
-    updateUrl(newFilters)
+    updateUrl(newFilters);
   };
-const updateUrl = (newFilters) => {
-const params = new URLSearchParams()
-Object.keys(newFilters).forEach((key) => {
-  if(Array.isArray(newFilters[key]) &&  newFilters[key].length > 0) {
-    params.append(key, newFilters[key].join(","))
-  }else if(newFilters[key]) {
-    params.append(key , newFilters[key])
-  }
-})
-setSearchingParams(params)
-router.push(`?${params.toString()}`)
-}
- const handlePriceChange = (event) => {
-const newPrice = event.target.value;
-setPriceRange([0,newPrice])
-const newFilters = {...filter , minPrice : 0 , maxPrice : newPrice}
-setFilter(newFilters)
-updateUrl(newFilters)
- }
+  const updateUrl = (newFilters) => {
+    const params = new URLSearchParams();
+    Object.keys(newFilters).forEach((key) => {
+      if (Array.isArray(newFilters[key]) && newFilters[key].length > 0) {
+        params.append(key, newFilters[key].join(","));
+      } else if (newFilters[key]) {
+        params.append(key, newFilters[key]);
+      }
+    });
+    setSearchingParams(params);
+    router.push(`?${params.toString()}`);
+  };
+  const handlePriceChange = (event) => {
+    const newPrice = event.target.value;
+    setPriceRange([0, newPrice]);
+    const newFilters = { ...filter, minPrice: 0, maxPrice: newPrice };
+    setFilter(newFilters);
+    updateUrl(newFilters);
+  };
 
   return (
     <div className="p-4">

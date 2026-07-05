@@ -19,25 +19,25 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex space-x-6">
           <Link
-            href="/collection/men"
+            href="/collection?gender=Men"
             className="text-gray-700 hover:text-black text-sm font-medium"
           >
             مردانه
           </Link>
           <Link
-            href="collection/women"
+            href="collection?gender=Women"
             className="text-gray-700 hover:text-black text-sm font-medium"
           >
             زنانه
           </Link>
           <Link
-            href=""
+            href="/collection?category=Top+Wear"
             className="text-gray-700 hover:text-black text-sm font-medium"
           >
             پیراهن
           </Link>
           <Link
-            href=""
+            href="/collection?category=Bottom+Wear"
             className="text-gray-700 hover:text-black text-sm font-medium"
           >
             شلوار
