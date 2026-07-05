@@ -67,8 +67,8 @@ const FilterSideBar = () => {
     setPriceRange([0, params.maxPrice || 100]);
   }, [searchingParams]);
 
-  const handleFilterChange = (e) => {
-    const { name, value, checked, type } = e.target;
+  const handleFilterChange = (event) => {
+    const { name, value, checked, type } = event.target;
     let newFilters = { ...filter };
     if (type === "checkbox") {
       if (checked) {
