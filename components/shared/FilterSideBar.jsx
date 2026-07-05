@@ -6,7 +6,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const FilterSideBar = () => {
-  const [searchingParams , setSearchingParams] = useSearchParams()
+ let searchParams = useSearchParams()
+ const [searchingParams , setSearchingParams] = useState(searchParams)
   const router = useRouter()
   const [filter, setFilter] = useState({
     category: "",
