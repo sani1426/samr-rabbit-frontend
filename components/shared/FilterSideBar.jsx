@@ -138,7 +138,7 @@ const FilterSideBar = () => {
               style={{ backgroundColor: col.toLowerCase() }}
               name="color"
               value={col}
-              onClick={(e)=> handleFilterChange(e)}
+              // onClick={(e)=> handleFilterChange(e)}
             ></button>
           ))}
         </div>
