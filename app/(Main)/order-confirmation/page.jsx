@@ -49,7 +49,7 @@ const page = () => {
                         {/* order Id & date */}
                         <div className="">
                             <h2 className="text-xl font-semibold">شماره سفارش: {checkout._id}</h2>
-                            <p className="text-gray-500">تاریخ سفارش: {new Date(checkout.createAt.toLocaleDateString())}</p>
+                            <p className="text-gray-500">تاریخ سفارش: {new Date(checkout.createAt)}</p>
                         </div>
                         {/* Estinated Delivery  */}
                         <div className="">
