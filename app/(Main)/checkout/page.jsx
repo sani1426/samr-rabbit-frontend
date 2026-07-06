@@ -276,12 +276,16 @@ const page = () => {
           ))}
         </div>
         <div className="flex items-center justify-between text-lg mb-4">
-          <p>جمع کل:</p>
+          <p>جمع محصولات:</p>
           <p>$ {cart.totalPrice?.toLocaleString()}</p>
         </div>
         <div className="flex items-center justify-between text-lg ">
           <p className="">هزینه ارسال:</p>
           <p className="">رایگان</p>
+        </div>
+        <div className="flex items-center justify-between text-lg mt-4 border-t pt-4">
+          <p className="">جمع کل:</p>
+          <p className="">$ {cart.totalPrice?.toLocaleString()}</p>
         </div>
       </div>
     </div>
