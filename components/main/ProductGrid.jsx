@@ -7,7 +7,7 @@ const ProductGrid = ({ products }) => {
       {products.map((product) => (
         <Link
           key={product._id}
-          href={`/product/${product._id}`}
+          href={`/products/${product._id}`}
           className="block"
         >
           <div className="bg-white p-4 rounded-lg ">
