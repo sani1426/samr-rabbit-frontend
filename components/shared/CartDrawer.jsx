@@ -14,9 +14,14 @@ import { useMainContext } from "@/context/MainContext";
 import { IoMdClose } from "react-icons/io";
 import CartContents from "../cart/CartContents";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const CartDrawer = () => {
   const { draweOpen, toggleCartDrawer,sideBarOpen,toggleSideBar } = useMainContext();
+  const router = useRouter()
+  const handleCheckOut = () => {
+router.push("/checkout")
+  }
   return (
     <>
   
@@ -37,7 +42,7 @@ const CartDrawer = () => {
       </div>
 
       <div className="p-4 bg-white sticky bottom-0">
-        <button className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all">
+        <button onClick={handleCheckOut} className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all">
           پرداخت صورتحساب
         </button>
         <p className="text-sm tracking-tighter text-gray-500 mt-2 text-center">
