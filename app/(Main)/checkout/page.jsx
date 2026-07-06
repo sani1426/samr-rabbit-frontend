@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -71,7 +72,7 @@ const cart = {
       sku: "CAS-DEN-003",
       category: "Top Wear",
       brand: "Street Style",
-      sizes:  "XXL",
+      sizes: "XXL",
       colors: "آبی روشن",
       collections: "Casual Wear",
       material: "Denim",
@@ -90,25 +91,24 @@ const cart = {
       numReviews: 8,
     },
   ],
-  totalPrice : 300,
+  totalPrice: 300,
 };
 const page = () => {
-    const router = useRouter()
-    const [checkoutId , setCheckoutId] = useState(null)
-    const [shippingAddress , setShippingAddress]= useState({
-        firstName : "" ,
-        lastName : "" ,
-        address : "" ,
-        city : "" ,
-        postalCode : "" ,
-        country : "" ,
-        phone : ""
-    })
+  const router = useRouter();
+  const [checkoutId, setCheckoutId] = useState(null);
+  const [shippingAddress, setShippingAddress] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+    phone: "",
+  });
 
-    const handleCreateCheckout = (e) => {
-      e.preventDefault()
-     
-    }
+  const handleCreateCheckout = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto py-10 px-6 tracking-tighter">
       {/* right section */}
@@ -236,12 +236,14 @@ const page = () => {
           </div>
           <div className="mt-6">
             {!checkoutId ? (
-              <button
-                type="submit"
-                className="w-full bg-black text-white py-3 rounded"
-              >
-                پرداخت
-              </button>
+              <Link href="/order-confirmation">
+                <button
+                  type="submit"
+                  className="w-full bg-black text-white py-3 rounded"
+                >
+                  پرداخت
+                </button>
+              </Link>
             ) : (
               <div className="">
                 <h3 className="text-lg mb-4">پرداخت اینترنتی</h3>
@@ -270,7 +272,9 @@ const page = () => {
                   <p className="text-gray-500">سایز : {product.size}</p>
                   <p className="text-gray-500">رنگ : {product.colors}</p>
                 </div>
-                <p className="text-xl text-green-600 mr-4">تومان {` ${product.price?.toLocaleString()}`}</p>
+                <p className="text-xl text-green-600 mr-4">
+                  تومان {` ${product.price?.toLocaleString()}`}
+                </p>
               </div>
             </div>
           ))}
@@ -290,6 +294,6 @@ const page = () => {
       </div>
     </div>
   );
-}
+};
 
-export default page
+export default page;
