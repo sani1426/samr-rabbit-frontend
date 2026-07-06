@@ -1,7 +1,7 @@
 
 const checkout = {
   _id: "6282",
-  createAt: new Date(),
+  createAt: "2023-04-01T12:00:00Z",
   checkoutItems: [
     {
       productId: "6282",
