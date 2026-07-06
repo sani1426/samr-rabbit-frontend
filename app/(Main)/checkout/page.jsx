@@ -270,17 +270,17 @@ const page = () => {
                   <p className="text-gray-500">سایز : {product.size}</p>
                   <p className="text-gray-500">رنگ : {product.colors}</p>
                 </div>
-                <p className="text-xl">${product.price?.toLocaleString()}</p>
+                <p className="text-xl text-green-600 mr-4">تومان {` ${product.price?.toLocaleString()}`}</p>
               </div>
             </div>
           ))}
         </div>
         <div className="flex items-center justify-between text-lg mb-4">
           <p>جمع کل:</p>
-          <p>${cart.totalPrice?.toLocaleString()}</p>
+          <p>$ {cart.totalPrice?.toLocaleString()}</p>
         </div>
         <div className="flex items-center justify-between text-lg ">
-          <p className="">کرایه ارسال</p>
+          <p className="">هزینه ارسال:</p>
           <p className="">رایگان</p>
         </div>
       </div>
