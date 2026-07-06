@@ -20,6 +20,7 @@ const CartDrawer = () => {
   const { draweOpen, toggleCartDrawer,sideBarOpen,toggleSideBar } = useMainContext();
   const router = useRouter()
   const handleCheckOut = () => {
+    toggleCartDrawer()
 router.push("/checkout")
   }
   return (
