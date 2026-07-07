@@ -63,10 +63,10 @@ const page = () => {
                       {
                         checkout.checkoutItems.map((item, index) => (
                           <div key={index} className="flex items-center mb-4">
-                              <img src={item.image} alt="" className="w-16 h-16 object-cover rounded-md mr-4" />
+                              <img src={item.image} alt="" className="w-16 h-16 object-cover rounded-md ml-4 mr-2" />
                               <div className="">
-                                <h4 className="text-md font-semibold">{item.name}</h4>
-                                <p className="text-sm text-gray-500">
+                                <h4 className="text-md font-semibold mr-2">{item.name}</h4>
+                                <p className="text-sm text-gray-500 mr-2">
                                   {item.color} | {item.size}
                                 </p>
                               </div>
@@ -91,6 +91,7 @@ const page = () => {
                         <p className="text-gray-600">{checkout.shippingAddress.city}, {" "}{checkout.shippingAddress.country}</p>
                       </div>
                     </div>
+
                       
                 </div>
             )
