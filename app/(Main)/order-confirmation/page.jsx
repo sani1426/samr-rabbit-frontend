@@ -37,7 +37,7 @@ const page = () => {
   const calculateEstimatedDelivery = (createdAt) => {
    const orderDate = new Date(createdAt);
    orderDate.setDate(orderDate.getDate() + 10);
-   return orderDate.toLocaleDateString();
+   return [orderDate.toLocaleDateString()];
   }
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white">
@@ -49,7 +49,7 @@ const page = () => {
                         {/* order Id & date */}
                         <div className="">
                             <h2 className="text-xl font-semibold">شماره سفارش: {checkout._id}</h2>
-                            <p className="text-gray-500">تاریخ سفارش: {new Date(checkout.createAt)}</p>
+                            <p className="text-gray-500">تاریخ سفارش: {new Date(checkout.createAt).toLocaleDateString()}</p>
                         </div>
                         {/* Estinated Delivery  */}
                         <div className="">
