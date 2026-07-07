@@ -91,9 +91,11 @@ const page = () => {
                         <p className="text-gray-600">{checkout.shippingAddress.city}, {" "}{checkout.shippingAddress.country}</p>
                       </div>
                     </div>
+                      
                 </div>
             )
         }
+
     </div>
   )
 }
