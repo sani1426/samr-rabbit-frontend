@@ -1,8 +1,9 @@
-import React from 'react'
+import MyOrder from '@/components/main/MyOrder'
+
 
 const page = () => {
   return (
-    <div>page</div>
+    <MyOrder />
   )
 }
 
