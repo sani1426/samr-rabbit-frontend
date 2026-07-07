@@ -108,6 +108,7 @@ const page = () => {
 
   const handleCreateCheckout = (e) => {
     e.preventDefault();
+    router.push("/order-confirmation");
   };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto py-10 px-6 tracking-tighter">
@@ -236,14 +237,14 @@ const page = () => {
           </div>
           <div className="mt-6">
             {!checkoutId ? (
-              <Link href="/order-confirmation">
+          
                 <button
                   type="submit"
                   className="w-full bg-black text-white py-3 rounded"
                 >
                   پرداخت
                 </button>
-              </Link>
+       
             ) : (
               <div className="">
                 <h3 className="text-lg mb-4">پرداخت اینترنتی</h3>
