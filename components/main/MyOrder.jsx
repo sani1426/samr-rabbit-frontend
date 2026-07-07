@@ -1,5 +1,6 @@
 "use client"
 
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 const MyOrder = () => {
@@ -66,11 +67,14 @@ const MyOrder = () => {
                   key={order?._id}
                 >
                   <td className="py-2 px-2 sm:py-4 sm:px-4">
+                    <Link href={`/orders/${order?._id}`}>
+
                     <img
                       src={order?.orderItems[0]?.image}
                       className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-lg"
                       alt=""
                     />
+                    </Link>
                   </td>
                   <td className="py-2 px-2 sm:py-4 sm:px-4 font-medium text-gray-900 whitespace-nowrap">
                     #{order?._id}

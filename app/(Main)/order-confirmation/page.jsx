@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const checkout = {
   _id: "6282",
   createAt: "2023-04-01T12:00:00Z",
@@ -65,7 +67,7 @@ const page = () => {
           {/* order Items */}
           <div className="mb-20">
             {checkout.checkoutItems.map((item, index) => (
-              <div key={index} className="flex items-center mb-4">
+              <Link href={`/orders/${item.productId}`} key={index} className="flex items-center mb-4">
                 <img
                   src={item.image}
                   alt=""
@@ -81,7 +83,7 @@ const page = () => {
                   <p className="text-md">{item.price.toLocaleString()} تومان</p>
                   <p className="text-sm text-gray-500">{item.quantity} عدد</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           {/* payment & delivery information */}
