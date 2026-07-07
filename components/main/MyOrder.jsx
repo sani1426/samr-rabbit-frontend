@@ -68,35 +68,42 @@ const MyOrder = () => {
                 >
                   <td className="py-2 px-2 sm:py-4 sm:px-4">
                     <Link href={`/orders/${order?._id}`}>
-
-                    <img
-                      src={order?.orderItems[0]?.image}
-                      className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-lg"
-                      alt=""
-                    />
+                      <img
+                        src={order?.orderItems[0]?.image}
+                        className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-lg"
+                        alt=""
+                      />
                     </Link>
                   </td>
                   <td className="py-2 px-2 sm:py-4 sm:px-4 font-medium text-gray-900 whitespace-nowrap">
-                    #{order?._id}
+                    <Link className='text-blue-500 hover:text-blue-700' href={`/orders/${order?._id}`}> #{order?._id}</Link>
                   </td>
                   <td className="py-2 px-2 sm:py-4 sm:px-4">
                     {new Date(order?.createdAt).toLocaleDateString()}
                     {new Date(order?.createdAt).toLocaleTimeString()}
                   </td>
                   <td className="py-2 px-2 sm:py-4 sm:px-4">
-                    {order?.DeliveryAddress ? `${order?.DeliveryAddress.city} , ${order.DeliveryAddress.country}` : "N/A"}
+                    {order?.DeliveryAddress
+                      ? `${order?.DeliveryAddress.city} , ${order.DeliveryAddress.country}`
+                      : "N/A"}
                   </td>
-                    <td className="py-2 px-2 sm:py-4 sm:px-4">
-                        {
-                            order.orderItems.length
-                        }
-                    </td>
-                      <td className="py-2 px-2 sm:py-4 sm:px-4">
-                        ${order.totalPrice}
-                      </td>
-                        <td className="py-2 px-2 sm:py-4 sm:px-4">
-                            <span className={`${order.isPaid ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"} px-2 py-1 rounded-full text-xs sm:text-sm font-medium`}>{order?.isPaid ? "پرداخت شده" : "پرداخت نشده"}</span>
-                        </td>
+                  <td className="py-2 px-2 sm:py-4 sm:px-4">
+                    {order.orderItems.length}
+                  </td>
+                  <td className="py-2 px-2 sm:py-4 sm:px-4">
+                    ${order.totalPrice}
+                  </td>
+                  <td className="py-2 px-2 sm:py-4 sm:px-4">
+                    <span
+                      className={`${
+                        order.isPaid
+                          ? "bg-green-100 text-green-700"
+                          : "bg-red-100 text-red-700"
+                      } px-2 py-1 rounded-full text-xs sm:text-sm font-medium`}
+                    >
+                      {order?.isPaid ? "پرداخت شده" : "پرداخت نشده"}
+                    </span>
+                  </td>
                 </tr>
               ))
             ) : (
