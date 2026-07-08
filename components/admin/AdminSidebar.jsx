@@ -98,7 +98,7 @@ const AdminSidebar = () => {
             </Link>
           </nav>
           <div className="mt-6">
-            <button className="w-full bg-red-500 text-white py-2 px-4 rounded flex items-center justify-center space-x-2 hover:bg-red-600 transition-all duration-300 ease-in-out" onClick={handleLogout}>
+            <button className="w-full bg-red-500 text-white py-2 px-4 rounded flex items-center justify-center space-x-2 hover:bg-red-600 transition-all duration-300 ease-in-out cursor-pointer" onClick={handleLogout}>
               <FaSignOutAlt />
               <span>خروج</span>
             </button>
