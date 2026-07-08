@@ -97,7 +97,7 @@ const AdminSidebar = () => {
             </Link>
           </nav>
           <div className="mt-6">
-            <button className="" onClick={handleLogout}></button>
+            <button className="" onClick={handleLogout}>خروج</button>
           </div>
         </div>
       </div>
