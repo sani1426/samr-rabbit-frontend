@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react";
+import { AiFillDelete } from "react-icons/ai";
+import { RiEdit2Fill } from "react-icons/ri";
 
 
 const page = () => {
@@ -47,6 +49,16 @@ const page = () => {
         }); // reset form after submission
     };
     
+    const handleRoleChange = async (userId, newRole) => {
+console.log({ userId, newRole });
+    }
+
+    const handleDeleteUser = async (userId) => {
+        if(window.confirm("آیا مطمئن هستید که می خواهید کاربر را حذف کنید؟")) {
+          console.log({ userId });
+        }
+    }
+
 
       return (
         <div className="max-w-7xl mx-auto p-6">
@@ -116,6 +128,59 @@ const page = () => {
                 اضاف کردن
               </button>
             </form>
+          </div>
+          {/* list of users */}
+
+          <div className="overflow-x-auto shadow-md sm:rounded-lg">
+            <table className="min-w-full text-right text-gray-500">
+              <thead className="bg-gray-100 text-xs text-gray-700">
+                <tr>
+                  <th scope="col" className="px-4 py-3">
+                    نام
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    ایمیل
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    نقش
+                  </th>
+                  <th scope="col" className="px-4 py-3">
+                    عملیات
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={user._id} className="border-b hover:bg-gray-50 ">
+                    <td className="p-4 font-medium text-gray-900 whitspace-nowrap ">
+                      {user.name}
+                    </td>
+                    <td className="p-4 ">
+                      {user.email}
+                    </td>
+                    <td className="p-4">
+                      <select
+                        name="role"
+                        value={user.role}
+                        onChange={(e) =>
+                          handleRoleChange(user._id, e.target.value)
+                        }
+                        id=""
+                        className="p-2 border rounded"
+                      >
+                        <option value="customer">کاربر</option>
+                        <option value="admin">مدیر</option>
+                      </select>
+                    </td>
+                    <td className="px-4 py-3">
+                      <button onClick={() => handleDeleteUser(user._id)} className="bg-red-100 px-4 py-2 rounded hover:bg-red-200 transition-all duration-300 ease-in-out cursor-pointer flex items-center justify-center">
+                        <AiFillDelete className="text-red-600" />
+                      </button>
+                       </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       );

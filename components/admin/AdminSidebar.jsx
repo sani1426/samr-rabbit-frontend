@@ -66,7 +66,7 @@ const AdminSidebar = () => {
             <Link
               href="/admin/products"
               className={`${
-                pathName === "/admin/users"
+                pathName === "/admin/products"
                   ? "bg-gray-700 text-white py-3 px-4 rounded flex items-center space-x-2"
                   : "text-gray-300 hover:bg-gray-700 hover:text-white py-3 px-4 rounded flex items-center space-x-2 transition-all duration-300 ease-in-out"
               }`}
@@ -77,7 +77,7 @@ const AdminSidebar = () => {
             <Link
               href="/admin/orders"
               className={`${
-                pathName === "/admin/users"
+                pathName === "/admin/orders"
                   ? "bg-gray-700 text-white py-3 px-4 rounded flex items-center space-x-2"
                   : "text-gray-300 hover:bg-gray-700 hover:text-white py-3 px-4 rounded flex items-center space-x-2 transition-all duration-300 ease-in-out"
               }`}
@@ -88,7 +88,7 @@ const AdminSidebar = () => {
             <Link
               href="/"
               className={`${
-                pathName === "/admin/users"
+                pathName === "/"
                   ? "bg-gray-700 text-white py-3 px-4 rounded flex items-center space-x-2"
                   : "text-gray-300 hover:bg-gray-700 hover:text-white py-3 px-4 rounded flex items-center space-x-2 transition-all duration-300 ease-in-out"
               }`}
