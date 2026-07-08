@@ -44,6 +44,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center space-x-4">
+          <Link href="/admin" className="block  bg-black px-2 rounded text-sm text-white ">ادمین</Link>
           <Link href="/profile" className="hover:text-black ">
             <HiOutlineUser className="h-6 w-6 text-gray-700" />
           </Link>
