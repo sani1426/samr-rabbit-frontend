@@ -54,7 +54,7 @@ const page = () => {
                   <td className="p-4">{product.price}</td>
                   <td className="p-4">{product.stock}</td>
                   <td className="p-4 flex gap-2 justify-center items-center">
-                    <Link href={`/admin/products/${product._id}/edit`} className="bg-blue-100 px-4 py-2 rounded hover:bg-blue-200 transition-all duration-300 ease-in-out cursor-pointer flex items-center justify-center">
+                    <Link href={`/admin/products/${product._id}`} className="bg-blue-100 px-4 py-2 rounded hover:bg-blue-200 transition-all duration-300 ease-in-out cursor-pointer flex items-center justify-center">
                       <RiEdit2Fill className="text-blue-600" />
                       </Link>
                       <button onClick={()=> handleDeleteProduct(product._id)} className="bg-red-100 px-4 py-2 rounded hover:bg-red-200 transition-all duration-300 ease-in-out cursor-pointer flex items-center justify-center">
