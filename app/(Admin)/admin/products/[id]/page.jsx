@@ -127,10 +127,10 @@ const page = () => {
             name="sizes"
             value={productData.sizes.join(",")}
             onCange={(e) =>
-              setProductData((prevData) => ({
-                ...prevData,
+              setProductData({
+                ...productData,
                 sizes: e.target.value.split(",").map((size) => size.trim()),
-              }))
+              })
             }
             className="w-full p-2 border rounded-md border-gray-300"
             required
@@ -146,10 +146,10 @@ const page = () => {
             name="colors"
             value={productData.colors.join(",")}
             onCange={(e) =>
-              setProductData((prevData) => ({
-                ...prevData,
+              setProductData({
+                ...productData,
                 colors: e.target.value.split(",").map((color) => color.trim()),
-              }))
+              })
             }
             className="w-full p-2 border rounded-md border-gray-300"
             required
@@ -157,24 +157,27 @@ const page = () => {
         </div>
 
         <div className="mb-6">
-            <label className="block font-semibold mb-2">تصویر محصول:</label>
-            <input
-                type="file"
-                name="images"
-                onChange={handleImageUpload}
-               />
-               <div className="flex gap-4 mt-4">
-                {
-                    productData.images.map((image, index) => (
-                        <div key={index} className="">
-                        <img src={image.url} alt={image.altText || "product Image"} className="w-20 h-20 object-cover rounded-md shadow-md " />
-                        </div>
-                    ))
-                }
-               </div>
+          <label className="block font-semibold mb-2">تصویر محصول:</label>
+          <input type="file" name="images" onChange={handleImageUpload} />
+          <div className="flex gap-4 mt-4">
+            {productData.images.map((image, index) => (
+              <div key={index} className="">
+                <img
+                  src={image.url}
+                  alt={image.altText || "product Image"}
+                  className="w-20 h-20 object-cover rounded-md shadow-md "
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <button className="w-full bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition-all duration-300 ease-in-out cursor-pointer" type="submit">ویرایش محصول</button>
+        <button
+          className="w-full bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition-all duration-300 ease-in-out cursor-pointer"
+          type="submit"
+        >
+          ویرایش محصول
+        </button>
       </form>
     </div>
   );
