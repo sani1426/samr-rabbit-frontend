@@ -126,10 +126,7 @@ const page = () => {
           name="sizes"
             type="text"
             value={productData.sizes.join(", ")}
-            onCange={(e) =>
-              setProductData({
-                ...productData,
-                sizes: e.target.value.split(",").map((size) => size.trim()),
+            onCange={(e) => setProductData({  ...productData,  sizes: e.target.value.split(",").map((size) => size.trim()),
               })
             }
             className="w-full p-2 border rounded-md border-gray-300"
