@@ -122,16 +122,14 @@ const page = () => {
           <label className="block font-semibold mb-2">
             سایز محصول 
           </label>
-          <input
-          name="sizes"
-            type="text"
-            value={productData.sizes.join(",")}
-            onCange={(e) => setProductData({...productData ,  sizes: e.target.value.split(", ")
-              })
-            }
-            className="w-full p-2 border rounded-md border-gray-300"
-            required
-          />
+         <input type="text" name="sizes" value={productData.sizes.join(",  ")}
+         onChange={(e) => {
+          setProductData({
+            ...productData ,
+            sizes : e.target.value.split(",").map((size) => size.trim())
+          })
+         }}
+         className="w-full p-2 border rounded-md border-gray-300" />
         </div>
 
         <div className="mb-6">
