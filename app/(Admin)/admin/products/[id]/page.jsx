@@ -120,12 +120,11 @@ const page = () => {
 
         <div className="mb-6">
           <label className="block font-semibold mb-2">
-            سایز محصول (comma-separated)
+            سایز محصول 
           </label>
           <input
             type="text"
-            name="sizes"
-            value={productData.sizes.join(",")}
+            value={productData.sizes.join(", ")}
             onCange={(e) =>
               setProductData({
                 ...productData,
@@ -139,12 +138,12 @@ const page = () => {
 
         <div className="mb-6">
           <label className="block font-semibold mb-2">
-            رنگ محصول (comma-separated)
+            رنگ محصول 
           </label>
           <input
             type="text"
             name="colors"
-            value={productData.colors.join(",")}
+            value={productData.colors.join(", ")}
             onCange={(e) =>
               setProductData({
                 ...productData,
