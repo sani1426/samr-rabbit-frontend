@@ -123,6 +123,7 @@ const page = () => {
             سایز محصول 
           </label>
           <input
+          name="sizes"
             type="text"
             value={productData.sizes.join(", ")}
             onCange={(e) =>
