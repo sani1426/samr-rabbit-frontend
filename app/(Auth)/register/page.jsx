@@ -1,17 +1,26 @@
 "use client";
 
 import LoginImage from "@/components/ui/LoginImage";
-
-
+import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
 
+
 const page = () => {
+  const {register} = useAppContext()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [loading , setLoading]= useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); 
+   const res =  register(name , email , password) ; 
+   if (res) {
+    setLoading(false);
+   }else {
+    setLoading(false); 
+   }
   };
   return (
     <div className="flex">
