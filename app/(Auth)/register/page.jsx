@@ -4,6 +4,7 @@ import LoginImage from "@/components/ui/LoginImage";
 import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 
 
 const page = () => {
@@ -18,8 +19,10 @@ const page = () => {
    const res =  register(name , email , password) ; 
    if (res) {
     setLoading(false);
+    toast.success("ثبت نام شما با موفقیت انجام شد") ; 
    }else {
     setLoading(false); 
+    toast.error("ثبت نام شما با شکل خطا انجام شد") ; 
    }
   };
   return (
@@ -72,9 +75,11 @@ const page = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-black text-white p-2 rounded-lg font-semibold  hover:bg-gray-800 transition"
+            className={`w-full bg-black text-white p-2 rounded-lg font-semibold  hover:bg-gray-800 transition cursor-pointer ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            ثبت نام
+            {loading ? "در حال ارسال ..." : " ثبت نام"}
           </button>
           <p className="mt-6 text-center text-sm">
             قبلا ثبت نام کرده اید؟{" "}
