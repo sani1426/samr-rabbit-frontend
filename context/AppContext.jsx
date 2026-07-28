@@ -1,46 +1,41 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState } from "react"
-import axios from "axios"
-import backendApi from "@/common/BackendApi" ; 
+import { createContext, useContext, useState } from "react";
+import axios from "axios";
+import backendApi from "@/common/BackendApi";
 
+const AppContext = createContext();
 
+const AppContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState("");
 
-
-const AppContext = createContext()
-
-
-const AppContextProvider = ({children}) => {
-    const [user , setUser] = useState({})
-    const [token , setToken] = useState("")
-
-const Register = async (name , email , password) => {
-  
-    const response = await axios.post(backendApi.register.url , {
-            name , email , password
+  const Register = async (name, email, password) => {
+    const response = await axios.post(backendApi.register.url, {
+      name,
+      email,
+      password,
     });
-    if(response.success) {
-                localStorage.setItem("token", response.data.token);
-                localStorage.setItem("user", JSON.stringify(response.data));
-        setUser(response.data)
-        setToken(response.data.token)
-
-        return true
-    }else {
-        console.log(response.message)
-        return false
+    if (response.success) {
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data));
+      setUser(response.data);
+      setToken(response.data.token);
+      console.log(user , token);
+      return true;
+    } else {
+      console.log(response.message);
+      return false;
     }
-}
+  };
 
-    return (
-        <AppContext.Provider value={{user , token , Register}}>
-            {children}
-        </AppContext.Provider>
-    )
-}
+  return (
+    <AppContext.Provider value={{ user, token, Register }}>
+      {children}
+    </AppContext.Provider>
+  );
+};
 
+const useAppContext = () => useContext(AppContext);
 
-const useAppContext = () => useContext(AppContext)
-
-
-export { AppContextProvider, useAppContext }
+export { AppContextProvider, useAppContext };
