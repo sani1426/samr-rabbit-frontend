@@ -5,11 +5,11 @@ import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
-import {useNavigation} from "next/navigation";
+import {useRouter} from "next/navigation";
 
 
 const page = () => {
-  const router = useNavigation()
+  const router = useRouter();
   const {Register} = useAppContext()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
