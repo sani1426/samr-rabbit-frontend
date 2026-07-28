@@ -5,9 +5,11 @@ import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
+import {useNavigation} from "next/navigation";
 
 
 const page = () => {
+  const router = useNavigation()
   const {Register} = useAppContext()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -20,6 +22,7 @@ const page = () => {
    if (res) {
     setLoading(false);
     toast.success("ثبت نام شما با موفقیت انجام شد") ; 
+    router.push("/")
    }else {
     setLoading(false); 
     toast.error("ثبت نام شما با شکل خطا انجام شد") ; 
