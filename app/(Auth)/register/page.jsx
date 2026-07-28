@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 
 const page = () => {
-  const {register} = useAppContext()
+  const {Register} = useAppContext()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ const page = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true); 
-   const res =  register(name , email , password) ; 
+   const res =  Register(name , email , password) ; 
    if (res) {
     setLoading(false);
     toast.success("ثبت نام شما با موفقیت انجام شد") ; 
@@ -29,7 +29,7 @@ const page = () => {
     <div className="flex">
       <div className="w-full md:w-1/2 flex-col justify-center items-center p-8 md:p-12">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e) => handleSubmit(e)}
           className="w-full max-w-md bg-white p-8 rounded-lg border shadow-sm"
         >
           <div className="flex justify-center mb-6">
