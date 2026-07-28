@@ -3,7 +3,7 @@ import axios from "axios";
 
 const appReducer = (state, action) => {
   switch ((action.type)) {
-    case REGISTER_USER:
+    case "REGISTER_USER":
       async () => {
         const response = await axios.post(backendApi.register.url, {
           name: action.payload.name,
