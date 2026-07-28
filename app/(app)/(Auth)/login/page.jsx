@@ -3,16 +3,16 @@
 import LoginImage from "@/components/ui/LoginImage"
 import Link from "next/link"
 import { useState } from "react"
-import { loginUser } from "@/redux/slices/authSlice"
-import { useDispatch } from "react-redux"
+// import { loginUser } from "@/redux/slices/authSlice"
+// import { useDispatch } from "react-redux"
 
 const page = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(loginUser({email , password}))
+      // dispatch(loginUser({email , password}))
     };
   return (
     <div className="flex">
