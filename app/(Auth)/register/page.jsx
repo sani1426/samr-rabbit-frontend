@@ -10,7 +10,7 @@ import {useRouter} from "next/navigation";
 
 const page = () => {
   const router = useRouter();
-  const {Register} = useAppContext()
+  const {Register , isAuthenticated } = useAppContext()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -18,14 +18,14 @@ const page = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true); 
-   const res =  Register(name , email , password) ; 
-   if (res) {
-    setLoading(false);
-    toast.success("ثبت نام شما با موفقیت انجام شد") ; 
-    router.push("/")
-   }else {
-    setLoading(false); 
-    toast.error("ثبت نام شما با شکل خطا انجام شد") ; 
+  Register(name , email , password) ; 
+   if (isAuthenticated) {
+     setLoading(false);
+     toast.success("ثبت نام شما با موفقیت انجام شد");
+     router.push("/");
+   } else {
+     setLoading(false);
+     toast.error("ثبت نام شما با شکل خطا انجام شد");
    }
   };
   return (
