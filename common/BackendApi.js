@@ -2,17 +2,17 @@ const backendUrl = "https://sami-rabbit-backend.vercel.app/api";
 
 const backendApi = {
     register : {
-        url : `${backendUrl}/register` ,
+        url : `${backendUrl}/users/register` ,
         methode : "post" ,
         access : "Public" , 
     },
     login : {
-        url : `${backendUrl}/login` ,
+        url : `${backendUrl}/users/login` ,
         methode : "post" ,
         access : "Public" , 
     },
     profile : {
-        url : `${backendUrl}/profile` ,
+        url : `${backendUrl}/users/profile` ,
         methode : "get" ,
         access : "Private" , 
     },
