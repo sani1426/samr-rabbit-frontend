@@ -20,10 +20,11 @@ const Register = async (name , email , password) => {
             name , email , password
     });
     if(response.success) {
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", JSON.stringify(response.data));
         setUser(response.data)
         setToken(response.data.token)
-        localStorage.setItem("token" , response.data.token)
-        localStorage.setItem("user" , user)
+
         return true
     }else {
         console.log(response.message)
