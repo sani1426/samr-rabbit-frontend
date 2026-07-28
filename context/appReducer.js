@@ -1,5 +1,7 @@
 import backendApi from "@/common/BackendApi";
 import axios from "axios";
+import { toast } from "sonner";
+
 
 const appReducer = (state, action) => {
   switch ((action.type)) {
@@ -14,6 +16,7 @@ const appReducer = (state, action) => {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("user", JSON.stringify(response.data));
           console.log(user, token);
+          toast.success("ثبت نام با موفقیت انجام شد")
           return {
             ...state,
             user: response.data,
@@ -22,6 +25,7 @@ const appReducer = (state, action) => {
           };
         } else {
           console.log(response.message);
+          toast.error("ثبت نام با خطا مواجه شد")
           return {
             ...state,
             isAuthenticated: false,

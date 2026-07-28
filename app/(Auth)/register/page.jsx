@@ -19,14 +19,7 @@ const page = () => {
     e.preventDefault();
     setLoading(true); 
   Register(name , email , password) ; 
-   if (isAuthenticated) {
-     setLoading(false);
-     toast.success("ثبت نام شما با موفقیت انجام شد");
-     router.push("/");
-   } else {
-     setLoading(false);
-     toast.error("ثبت نام شما با شکل خطا انجام شد");
-   }
+  setLoading(false);
   };
   return (
     <div className="flex">
