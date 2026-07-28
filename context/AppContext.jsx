@@ -17,9 +17,7 @@ const AppContextProvider = ({children}) => {
 const Register = async (name , email , password) => {
   
     const response = await axios.post(backendApi.register.url , {
-        body : {
             name , email , password
-        }
     });
     if(response.success) {
         setUser(response.data)
