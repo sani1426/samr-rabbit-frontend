@@ -6,12 +6,12 @@ import { toast } from "sonner";
 const appReducer = async (state, action) => {
   switch ((action.type)) {
     case "REGISTER_USER":{
-        console.log(action.payload.name , action.payload.email , action.payload.password);
         const response = await axios.post(backendApi.register.url, {
           name: action.payload.name,
           email: action.payload.email,
           password: action.payload.password,
         });
+        console.log(response);
         if (response.success) {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("user", JSON.stringify(response.data));
