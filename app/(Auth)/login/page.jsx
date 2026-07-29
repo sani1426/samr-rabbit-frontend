@@ -1,18 +1,27 @@
 "use client"
 
 import LoginImage from "@/components/ui/LoginImage"
+import { useAppContext } from "@/context/AppContext"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
-// import { loginUser } from "@/redux/slices/authSlice"
-// import { useDispatch } from "react-redux"
+
+
 
 const page = () => {
+  const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const dispatch = useDispatch()
+  const [loading , setLoading] = useState(false)
+  const {LoginUser , isLoggedIn} = useAppContext()
     const handleSubmit = (e) => {
       e.preventDefault();
-      // dispatch(loginUser({email , password}))
+      setLoading(true)
+      LoginUser(email , password)
+      setLoading(false)
+      if (isLoggedIn) {
+        router.push("/")
+      }
     };
   return (
     <div className="flex">
@@ -52,9 +61,13 @@ const page = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-black text-white p-2 rounded-lg font-semibold  hover:bg-gray-800 transition"
+            className={`w-full bg-black text-white p-2 rounded-lg font-semibold  hover:bg-gray-800 transition ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            ورود
+            {
+              loading ? "در حال ارسال ..." : " ورود"
+            }
           </button>
           <p className="mt-6 text-center text-sm">
             ثبت نام نکرده اید؟{" "}
