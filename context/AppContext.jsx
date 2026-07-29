@@ -18,7 +18,7 @@ const AppContextProvider = ({ children }) => {
   const [token, setToken] = useState("");
 
   const Register = async (name, email, password) => {
- dispatch({ type: "REGISTER_USER", payload: name , email , password });
+ dispatch({ type: "REGISTER_USER", payload: {name , email , password} });
     // const response = await axios.post(backendApi.register.url, {
     //   name,
     //   email,
