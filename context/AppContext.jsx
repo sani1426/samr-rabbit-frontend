@@ -8,7 +8,9 @@ import appReducer from "./appReducer";
 const AppContext = createContext();
 
 const initialState = {
-  user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
+  user: () => {
+    localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : {} 
+  },
   token: localStorage.getItem("token") || "" ,
   isAuthenticated : localStorage.getItem("token") ? true : false , 
   isLoggedIn : localStorage.getItem("token") ? true : false , 
