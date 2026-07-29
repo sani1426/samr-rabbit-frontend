@@ -11,20 +11,19 @@ const appReducer = async (state, action) => {
           email: action.payload.email,
           password: action.payload.password,
         });
-        console.log(response);
-        if (response.success) {
+  
+        if (response.data.success) {
           localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", JSON.stringify(response.data));
-          console.log(user, token);
+          localStorage.setItem("user", JSON.stringify(response.data.data));
           toast.success("ثبت نام با موفقیت انجام شد")
           return {
             ...state,
-            user: response.data,
+            user: response.data.data,
             token: response.data.token,
             isAuthenticated: true,
           };
         } else {
-          console.log(response.message);
+          console.log(response.data.message);
           toast.error("ثبت نام با خطا مواجه شد")
           return {
             ...state,
