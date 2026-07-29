@@ -17,9 +17,17 @@ const page = () => {
   const [loading , setLoading]= useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true); 
+    setLoading(true) ; 
   Register(name , email , password) ; 
-  setLoading(false);
+  if(isAuthenticated){
+    setLoading(false)
+    router.push("/")
+  }else {
+    setLoading(false)
+    setName("") ;
+    setEmail("") ;
+    setPassword("")
+  }
   };
   return (
     <div className="flex">

@@ -12,7 +12,7 @@ const appReducer = async (state, action) => {
           password: action.payload.password,
         });
   
-        if (data.success) {
+        if (!data.error) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.data));
           toast.success("ثبت نام با موفقیت انجام شد")
