@@ -3,10 +3,10 @@ import axios from "axios";
 import { toast } from "sonner";
 
 
-const appReducer = (state, action) => {
+const appReducer = async (state, action) => {
   switch ((action.type)) {
     case "REGISTER_USER":{
-      async () => {
+        console.log(action.payload.name , action.payload.email , action.payload.password);
         const response = await axios.post(backendApi.register.url, {
           name: action.payload.name,
           email: action.payload.email,
@@ -30,7 +30,7 @@ const appReducer = (state, action) => {
             ...state,
             isAuthenticated: false,
           };
-        }
+        
       };}
       // const create = async (name , email , password) => {
       //       const response = await axios.post(backendApi.register.url, {
