@@ -13,8 +13,8 @@ const appReducer = async (state, action) => {
         });
   
         if (!data.error) {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("user", JSON.stringify(data.data));
+          localStorage.setItem("token", await data.token);
+          localStorage.setItem("user", await JSON.stringify(data.data));
           toast.success("ثبت نام با موفقیت انجام شد")
           return {
             ...state,
@@ -31,29 +31,33 @@ const appReducer = async (state, action) => {
           };
         
       };}
-      // const create = async (name , email , password) => {
-      //       const response = await axios.post(backendApi.register.url, {
-      //         name,
-      //         email,
-      //         password,
-      //       });
-      //       if (response.success) {
-      //         localStorage.setItem("token", response.data.token);
-      //         localStorage.setItem("user", JSON.stringify(response.data));
-      //         console.log(user, token);
-      //         return {
-      //             ...state ,
-      //             user : response.data ,
-      //             token : response.data.token ,
-      //             isAuthenticated : true ,
-      //         };
-      //       } else {
-      //         console.log(response.message);
-      //         return false;
-      //       }
-      // }
       break;
 
+    case "LOGIN_USER" :{
+      const {data} = await axios.post(backendApi.login.url, {
+        email: action.payload.email ,
+        password: action.payload.password
+      })
+      if (!data.error){
+        localStorage.setItem("token" , await data.token);
+        localStorage.setItem("userInfo" , await JSON.stringify(data.data));
+        toast.success("با موفقیت وارد شدید")
+        return {
+          ...state ,
+          user : data.data ,
+          token : data.token ,
+          isLoggedIn : true ,
+        }
+      } else {
+        console.log(data.message);
+        toast.error("ورود با خطا مواجه شد")
+        return {
+          ...state ,
+          isLoggedIn : false ,
+        }
+      }
+    }
+    break;
     default:
       break;
   }

@@ -8,9 +8,10 @@ import appReducer from "./appReducer";
 const AppContext = createContext();
 
 const initialState = {
-  user: {},
-  token: "",
-  isAuthenticated : false , 
+  user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
+  token: localStorage.getItem("token") || "" ,
+  isAuthenticated : localStorage.getItem("token") ? true : false , 
+  isLoggedIn : localStorage.getItem("token") ? true : false , 
 };
 const AppContextProvider = ({ children }) => {
      const [state, dispatch] = useReducer(appReducer, initialState);
@@ -19,27 +20,14 @@ const AppContextProvider = ({ children }) => {
 
   const Register = (name, email, password) => {
  dispatch({ type: "REGISTER_USER", payload: {name : name , email : email , password : password} });
-     console.log(name , email , password);
-    // const response = await axios.post(backendApi.register.url, {
-    //   name,
-    //   email,
-    //   password,
-    // });
-    // if (response.success) {
-    //   localStorage.setItem("token", response.data.token);
-    //   localStorage.setItem("user", JSON.stringify(response.data));
-    //   setUser(response.data);
-    //   setToken(response.data.token);
-    //   console.log(user , token);
-    //   return true;
-    // } else {
-    //   console.log(response.message);
-    //   return false;
-    // }
+
   };
+  const LoginUser = (email, password) => {
+    dispatch({type : "LOGIN_USER" , payload : {email , password}})
+  }
 
   return (
-    <AppContext.Provider value={{ user, token, Register , ...state }}>
+    <AppContext.Provider value={{ user, token, Register, LoginUser , ...state }}>
       {children}
     </AppContext.Provider>
   );
