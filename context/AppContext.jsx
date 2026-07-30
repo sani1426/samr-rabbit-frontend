@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import appReducer from "./appReducer";
 // import axios from "axios";
 // import backendApi from "@/common/BackendApi";
@@ -8,15 +8,19 @@ import appReducer from "./appReducer";
 const AppContext = createContext();
 
 const initialState = {
-  user: () => {
-    window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : {} 
-  },
-  token: window.localStorage.getItem("token") || "" ,
-  isAuthenticated : window.localStorage.getItem("token") ? true : false , 
-  isLoggedIn : window.localStorage.getItem("token") ? true : false , 
+  user:null,
+  token: null ,
+  isAuthenticated : false , 
+  isLoggedIn :false , 
 };
 const AppContextProvider = ({ children }) => {
      const [state, dispatch] = useReducer(appReducer, initialState);
+     useEffect(() => {
+      if (state.user && state.token) {
+        localStorage.setItem("user", JSON.stringify(state.user));
+        localStorage.setItem("token", state.token);
+      }
+     },[state.user , state.token])
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
 
