@@ -22,13 +22,14 @@ const AppContextProvider = ({ children }) => {
   //   isLoggedIn: false,
   // };
   //  const [state, dispatch] = useReducer(appReducer, initialState);
-  const [user, setUser] = useState();
-  const [token, setToken] = useState();
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   useEffect(() => {
     setUser(() => {
-      localStorage.getItem("user");
+      localStorage.getItem("user") ?  localStorage.getItem("user") : null
     });
-    setToken(() => localStorage.getItem("token"));
+    setToken(() => {
+      localStorage.getItem("token") ? localStorage.getItem("token") : null })
   }, []);
 
   const Register = async (name, email, password) => {
@@ -47,7 +48,7 @@ const AppContextProvider = ({ children }) => {
       return true;
     }
   };
-   const LoginUser = async (email, password) => {
+ const LoginUser = async (email, password) => {
      const { data } = await axios.post(backendApi.login.url, {
        email,
        password,
