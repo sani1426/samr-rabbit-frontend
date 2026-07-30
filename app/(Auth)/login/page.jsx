@@ -17,11 +17,11 @@ const page = () => {
   useEffect(() => {
     // if (token) router.push("/")
   } , [])
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = LoginUser(email, password);
-    console.log(response);
+    const response = await LoginUser(email, password);
+
     if (response) {
       setLoading(false);
       router.push("/");

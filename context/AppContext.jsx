@@ -53,7 +53,7 @@ const AppContextProvider = ({ children }) => {
        email,
        password,
      });
-     console.log(data);
+
      if (data.error) {
        toast.error(data.message);
        return false;

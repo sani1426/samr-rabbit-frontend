@@ -14,11 +14,10 @@ const page = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loading , setLoading]= useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true) ; 
-   const response = Register(name , email , password) ; 
-   console.log("reg" ,response);
+   const response = await Register(name , email , password) ; 
   if(response){
     setLoading(false)
     router.push("/")
