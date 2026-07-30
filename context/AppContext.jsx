@@ -15,12 +15,14 @@ const initialState = {
 };
 const AppContextProvider = ({ children }) => {
      const [state, dispatch] = useReducer(appReducer, initialState);
-     useEffect(() => {
-      if (state.user && state.token) {
-        localStorage.setItem("user", JSON.stringify(state.user));
-        localStorage.setItem("token", state.token);
-      }
-     },[state.user , state.token])
+     useEffect(
+       (initialState) => {
+         if (initialState.token) {
+           localStorage.setItem("token", initialState.token);
+         }
+       },
+       [initialState.user, initialState.token]
+     );
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
 
