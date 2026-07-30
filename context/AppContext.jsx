@@ -26,50 +26,53 @@ const AppContextProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   useEffect(() => {
     setUser(() => {
-      localStorage.getItem("user") ?  localStorage.getItem("user") : null
+      localStorage.getItem("user") ? localStorage.getItem("user") : null;
     });
     setToken(() => {
-      localStorage.getItem("token") ? localStorage.getItem("token") : null })
+      localStorage.getItem("token") ? localStorage.getItem("token") : null;
+    });
   }, []);
 
   const Register = async (name, email, password) => {
     const { data } = await axios.post(backendApi.register.url, {
       name,
       email,
-      password
+      password,
     });
-    if (data.error) {
-      toast.error(data.message);
-      return false;
-    } else {
+    if (data.success) {
       toast.success(data.message);
       setUser(JSON.stringify(data.data));
       setToken(data.token);
       return true;
     }
+    if (data.error) {
+      toast.error(data.message);
+      return false;
+    }
   };
- const LoginUser = async (email, password) => {
-     const { data } = await axios.post(backendApi.login.url, {
-       email,
-       password,
-     });
+  const LoginUser = async (email, password) => {
+    const { data } = await axios.post(backendApi.login.url, {
+      email,
+      password,
+    });
 
-     if (data.error) {
-       toast.error(data.message);
-       return false;
-     } else {
-       toast.success(data.message);
-       setUser(JSON.stringify(data.data));
-       setToken(data.token);
-       return true;
-     }
-   };
+    if (data.success) {
+      toast.success(data.message);
+      setUser(JSON.stringify(data.data));
+      setToken(data.token);
+      return true;
+    }
+    if (data.error) {
+      toast.error(data.message);
+      return false;
+    }
+  };
   const Logout = () => {
-    setUser(null)
-    setToken(null)
-    localStorage.removeItem("user")
-    localStorage.removeItem("token")
-  }
+    setUser(null);
+    setToken(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  };
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);

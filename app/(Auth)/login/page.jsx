@@ -15,13 +15,13 @@ const page = () => {
   const [loading , setLoading] = useState(false)
   const {LoginUser , token } = useAppContext()
   useEffect(() => {
-    // if (token) router.push("/")
+    if (token) router.push("/")
   } , [])
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     const response = await LoginUser(email, password);
-
+    console.log(response);
     if (response) {
       setLoading(false);
       router.push("/");
