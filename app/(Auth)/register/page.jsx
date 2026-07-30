@@ -4,13 +4,12 @@ import LoginImage from "@/components/ui/LoginImage";
 import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
-import { toast } from "sonner";
 import {useRouter} from "next/navigation";
 
 
 const page = () => {
   const router = useRouter();
-  const {Register , isAuthenticated } = useAppContext()
+  const {Register} = useAppContext()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -18,8 +17,8 @@ const page = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true) ; 
-  Register(name , email , password) ; 
-  if(isAuthenticated){
+   const response = Register(name , email , password) ; 
+  if(response){
     setLoading(false)
     router.push("/")
   }else {

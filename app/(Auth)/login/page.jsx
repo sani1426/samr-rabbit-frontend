@@ -13,15 +13,20 @@ const page = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading , setLoading] = useState(false)
-  const {LoginUser , isLoggedIn} = useAppContext()
+  const {LoginUser } = useAppContext()
     const handleSubmit = (e) => {
       e.preventDefault();
       setLoading(true)
-      LoginUser(email , password)
+    const response = LoginUser(email , password)
+     if(response){
       setLoading(false)
-      if (isLoggedIn) {
-        router.push("/")
-      }
+      router.push("/")
+     }else{
+      setLoading(false)
+      setEmail("")
+      setPassword("")
+     }
+ 
     };
   return (
     <div className="flex">
