@@ -15,19 +15,10 @@ import { toast } from "sonner";
 const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
-  // const initialState = {
-  //   user: null,
-  //   token: null,
-  //   isAuthenticated: false,
-  //   isLoggedIn: false,
-  // };
-  //  const [state, dispatch] = useReducer(appReducer, initialState);
+ 
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   useEffect(() => {
-    setUser(() => {
-      localStorage.getItem("user") ? localStorage.getItem("user") : null;
-    });
     setToken(() => {
       localStorage.getItem("token") ? localStorage.getItem("token") : null;
     });
@@ -41,7 +32,6 @@ const AppContextProvider = ({ children }) => {
     });
     if (data.success) {
       toast.success(data.message);
-      setUser(JSON.stringify(data.data));
       setToken(data.token);
       return true;
     }
@@ -58,7 +48,6 @@ const AppContextProvider = ({ children }) => {
 
     if (data.success) {
       toast.success(data.message);
-      setUser(JSON.stringify(data.data));
       setToken(data.token);
       return true;
     }
@@ -70,13 +59,11 @@ const AppContextProvider = ({ children }) => {
   const Logout = () => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem("user");
     localStorage.removeItem("token");
   };
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
-      localStorage.setItem("user", user);
     }
   }, [token]);
   return (
