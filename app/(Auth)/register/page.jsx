@@ -18,6 +18,7 @@ const page = () => {
     e.preventDefault();
     setLoading(true) ; 
    const response = Register(name , email , password) ; 
+   console.log("reg" ,response);
   if(response){
     setLoading(false)
     router.push("/")
