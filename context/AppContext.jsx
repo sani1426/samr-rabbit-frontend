@@ -39,6 +39,7 @@ const AppContextProvider = ({ children }) => {
       toast.success(data.message);
       setUser(data.data);
       setToken(data.token);
+      console.log(user , token);
       return true;
     }
   };
