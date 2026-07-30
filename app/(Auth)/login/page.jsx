@@ -4,7 +4,7 @@ import LoginImage from "@/components/ui/LoginImage"
 import { useAppContext } from "@/context/AppContext"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 
@@ -13,11 +13,14 @@ const page = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading , setLoading] = useState(false)
-  const {LoginUser } = useAppContext()
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      setLoading(true)
-    const response = LoginUser(email , password)
+  const {LoginUser , token } = useAppContext()
+  useEffect(() => {
+    if (token) router.push("/")
+  } , [])
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const response = LoginUser(email, password);
     if (response) {
       setLoading(false);
       router.push("/");
@@ -26,13 +29,12 @@ const page = () => {
       setEmail("");
       setPassword("");
     }
- 
-    };
+  };
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex-col justify-center items-center p-8 md:p-12">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e)=>handleSubmit(e)}
           className="w-full max-w-md bg-white p-8 rounded-lg border shadow-sm"
         >
           <div className="flex justify-center mb-6">

@@ -35,7 +35,7 @@ const AppContextProvider = ({ children }) => {
     const { data } = await axios.post(backendApi.register.url, {
       name,
       email,
-      password,
+      password
     });
     if (data.error) {
       toast.error(data.message);
@@ -47,21 +47,27 @@ const AppContextProvider = ({ children }) => {
       return true;
     }
   };
-  const LoginUser = async (email, password) => {
-    const { data } = await axios.post(backendApi.login.url, {
-      email,
-      password,
-    });
-    if (data.error) {
-      toast.error(data.message);
-      return false;
-    } else {
-      toast.success(data.message);
-      setUser(JSON.stringify(data.data));
-      setToken(data.token);
-      return true;
-    }
-  };
+   const LoginUser = async (email, password) => {
+     const { data } = await axios.post(backendApi.login.url, {
+       email,
+       password,
+     });
+     if (data.error) {
+       toast.error(data.message);
+       return false;
+     } else {
+       toast.success(data.message);
+       setUser(JSON.stringify(data.data));
+       setToken(data.token);
+       return true;
+     }
+   };
+  const Logout = () => {
+    setUser(null)
+    setToken(null)
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
+  }
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
@@ -69,7 +75,7 @@ const AppContextProvider = ({ children }) => {
     }
   }, [token]);
   return (
-    <AppContext.Provider value={{ user, token, Register, LoginUser }}>
+    <AppContext.Provider value={{ user, token, Register, LoginUser, Logout }}>
       {children}
     </AppContext.Provider>
   );
