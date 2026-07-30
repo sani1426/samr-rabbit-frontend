@@ -7,21 +7,22 @@ import appReducer from "./appReducer";
 
 const AppContext = createContext();
 
-const initialState = {
-  user:null,
-  token: null ,
-  isAuthenticated : false , 
-  isLoggedIn :false , 
-};
+
 const AppContextProvider = ({ children }) => {
+  const initialState = {
+    user: null,
+    token: null,
+    isAuthenticated: false,
+    isLoggedIn: false,
+  };
      const [state, dispatch] = useReducer(appReducer, initialState);
      useEffect(
-       (initialState) => {
+       () => {
          if (initialState.token) {
            localStorage.setItem("token", initialState.token);
          }
        },
-       [initialState.user, initialState.token]
+       [initialState.token]
      );
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
