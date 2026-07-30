@@ -13,8 +13,8 @@ const appReducer = async (state, action) => {
         });
   
         if (!data.error) {
-          localStorage.setItem("token", await data.token);
-          localStorage.setItem("user", await JSON.stringify(data.data));
+          window.localStorage.setItem("token", await data.token);
+          window.localStorage.setItem("user", await JSON.stringify(data.data));
           toast.success("ثبت نام با موفقیت انجام شد")
           return {
             ...state,
@@ -39,8 +39,8 @@ const appReducer = async (state, action) => {
         password: action.payload.password
       })
       if (!data.error){
-        localStorage.setItem("token" , await data.token);
-        localStorage.setItem("userInfo" , await JSON.stringify(data.data));
+        window.localStorage.setItem("token" , await data.token);
+        window.localStorage.setItem("userInfo" , await JSON.stringify(data.data));
         toast.success("با موفقیت وارد شدید")
         return {
           ...state ,

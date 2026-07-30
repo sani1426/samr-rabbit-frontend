@@ -9,11 +9,11 @@ const AppContext = createContext();
 
 const initialState = {
   user: () => {
-    localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : {} 
+    window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : {} 
   },
-  token: localStorage.getItem("token") || "" ,
-  isAuthenticated : localStorage.getItem("token") ? true : false , 
-  isLoggedIn : localStorage.getItem("token") ? true : false , 
+  token: window.localStorage.getItem("token") || "" ,
+  isAuthenticated : window.localStorage.getItem("token") ? true : false , 
+  isLoggedIn : window.localStorage.getItem("token") ? true : false , 
 };
 const AppContextProvider = ({ children }) => {
      const [state, dispatch] = useReducer(appReducer, initialState);
