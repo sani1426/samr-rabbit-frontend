@@ -24,6 +24,7 @@ const AppContextProvider = ({ children }) => {
       localStorage.getItem("user");
     });
     setToken(() => localStorage.getItem("token"));
+    console.log( "first" ,user, token);
   }, []);
 
   const Register = async (name, email, password) => {
@@ -37,7 +38,7 @@ const AppContextProvider = ({ children }) => {
       return false;
     } else {
       toast.success(data.message);
-      setUser(data.data);
+      setUser( JSON.stringify(data.data));
       setToken(data.token);
       console.log(user , token);
       return true;
@@ -61,6 +62,7 @@ const AppContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("token" , token)
     localStorage.setItem("user" , user)
+      console.log("last", user, token);
   } , [token])
   return (
     <AppContext.Provider value={{ user, token, Register, LoginUser }}>
