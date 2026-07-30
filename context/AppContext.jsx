@@ -44,7 +44,6 @@ const AppContextProvider = ({ children }) => {
       toast.success(data.message);
       setUser(JSON.stringify(data.data));
       setToken(data.token);
-      console.log(user, token);
       return true;
     }
   };
@@ -53,15 +52,15 @@ const AppContextProvider = ({ children }) => {
       email,
       password,
     });
- if (data.success) {
-  toast.success(data.message)
-  setUser(JSON.stringify(data.data))
-  setToken(data.token)
-  return true
- }else {
-  toast.error(data.message)
-  return false
- }
+    if (data.error) {
+      toast.error(data.message);
+      return false;
+    } else {
+      toast.success(data.message);
+      setUser(JSON.stringify(data.data));
+      setToken(data.token);
+      return true;
+    }
   };
   useEffect(() => {
     if (token) {

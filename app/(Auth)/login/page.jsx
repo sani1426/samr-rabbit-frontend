@@ -18,14 +18,14 @@ const page = () => {
       e.preventDefault();
       setLoading(true)
     const response = LoginUser(email , password)
-     if(response){
-      setLoading(false)
-      router.push("/")
-     }else{
-      setLoading(false)
-      setEmail("")
-      setPassword("")
-     }
+    if (response) {
+      setLoading(false);
+      router.push("/");
+    } else {
+      setLoading(false);
+      setEmail("");
+      setPassword("");
+    }
  
     };
   return (
