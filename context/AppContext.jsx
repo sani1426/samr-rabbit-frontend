@@ -1,13 +1,18 @@
 "use client";
 
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 // import appReducer from "./appReducer";
 import axios from "axios";
 import backendApi from "@/common/BackendApi";
 import { toast } from "sonner";
 
 const AppContext = createContext();
-
 
 const AppContextProvider = ({ children }) => {
   // const initialState = {
@@ -17,14 +22,13 @@ const AppContextProvider = ({ children }) => {
   //   isLoggedIn: false,
   // };
   //  const [state, dispatch] = useReducer(appReducer, initialState);
-  const [user, setUser] = useState({});
-  const [token, setToken] = useState("");
+  const [user, setUser] = useState();
+  const [token, setToken] = useState();
   useEffect(() => {
     setUser(() => {
       localStorage.getItem("user");
     });
     setToken(() => localStorage.getItem("token"));
-    console.log( "first" ,user, token);
   }, []);
 
   const Register = async (name, email, password) => {
@@ -38,9 +42,9 @@ const AppContextProvider = ({ children }) => {
       return false;
     } else {
       toast.success(data.message);
-      setUser( JSON.stringify(data.data));
+      setUser(JSON.stringify(data.data));
       setToken(data.token);
-      console.log(user , token);
+      console.log(user, token);
       return true;
     }
   };
@@ -49,21 +53,22 @@ const AppContextProvider = ({ children }) => {
       email,
       password,
     });
-    if (data.error) {
-      toast.error(data.message);
-      return false;
-    } else {
-      toast.success(data.message);
-      setUser(data.data);
-      setToken(data.token);
-      return true;
-    }
+ if (data.success) {
+  toast.success(data.message)
+  setUser(JSON.stringify(data.data))
+  setToken(data.token)
+  return true
+ }else {
+  toast.error(data.message)
+  return false
+ }
   };
   useEffect(() => {
-    localStorage.setItem("token" , token)
-    localStorage.setItem("user" , user)
-      console.log("last", user, token);
-  } , [token])
+    if (token) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", user);
+    }
+  }, [token]);
   return (
     <AppContext.Provider value={{ user, token, Register, LoginUser }}>
       {children}
