@@ -29,10 +29,10 @@ useEffect(() => {
   })
   setToken(()=>localStorage.getItem("token"))
 },[])
-  useEffect(() => {
-    localStorage.setItem("token" , token)
-    localStorage.setItem("user" , user)
-  } , [token])
+  // useEffect(() => {
+  //   localStorage.setItem("token" , token)
+  //   localStorage.setItem("user" , user)
+  // } , [token])
   const Register = async (name, email, password) => {
     const {data} = await axios.post(backendApi.register.url , {
       name , email , password
