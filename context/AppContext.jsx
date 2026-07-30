@@ -16,57 +16,51 @@ const AppContextProvider = ({ children }) => {
   //   isAuthenticated: false,
   //   isLoggedIn: false,
   // };
-    //  const [state, dispatch] = useReducer(appReducer, initialState);
-  const [user, setUser] = useState(()=>{
-    localStorage.getItem("userInfo") || {}
-  });
-  const [token, setToken] = useState(() => {
-    localStorage.getItem("token") || ""
-  });
-useEffect(() => {
-  setUser(() =>{
-    localStorage.getItem("user")
-  })
-  setToken(()=>localStorage.getItem("token"))
-},[])
-  // useEffect(() => {
-  //   localStorage.setItem("token" , token)
-  //   localStorage.setItem("user" , user)
-  // } , [token])
+  //  const [state, dispatch] = useReducer(appReducer, initialState);
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    setUser(() => {
+      localStorage.getItem("user");
+    });
+    setToken(() => localStorage.getItem("token"));
+  }, []);
+
   const Register = async (name, email, password) => {
-    const {data} = await axios.post(backendApi.register.url , {
-      name , email , password
-    })
+    const { data } = await axios.post(backendApi.register.url, {
+      name,
+      email,
+      password,
+    });
     if (data.error) {
-      toast.error(data.message)
-      return false
+      toast.error(data.message);
+      return false;
     } else {
-      toast.success(data.message)
-      setUser(data.data)
-      setToken(data.token)
-      localStorage.setItem("user" , await JSON.stringify(data.data))
-      localStorage.setItem("token" , await data.token)
-       return true;
+      toast.success(data.message);
+      setUser(data.data);
+      setToken(data.token);
+      return true;
     }
-   
   };
   const LoginUser = async (email, password) => {
-    const {data} = await axios.post(backendApi.login.url , {
-      email , password
-    })
-  if (data.error) {
-    toast.error(data.message);
-    return false;
-  } else {
-    toast.success(data.message);
-    setUser(data.data);
-    setToken(data.token);
-    localStorage.setItem("user", await JSON.stringify(data.data));
-    localStorage.setItem("token", await data.token);
-    return true;
-  }
-  }
-
+    const { data } = await axios.post(backendApi.login.url, {
+      email,
+      password,
+    });
+    if (data.error) {
+      toast.error(data.message);
+      return false;
+    } else {
+      toast.success(data.message);
+      setUser(data.data);
+      setToken(data.token);
+      return true;
+    }
+  };
+  useEffect(() => {
+    localStorage.setItem("token" , token)
+    localStorage.setItem("user" , user)
+  } , [token])
   return (
     <AppContext.Provider value={{ user, token, Register, LoginUser }}>
       {children}
