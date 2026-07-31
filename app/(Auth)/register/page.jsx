@@ -23,6 +23,7 @@ const page = () => {
     const response = await axios.post(backendApi.register.url , {
       name , email , password
     })
+    console.log(response);
     if (response.status === 201) {
  toast.success(response.data.message);
  setToken(response.data.token);
