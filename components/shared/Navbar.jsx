@@ -1,17 +1,47 @@
+"use client"
 import {HiOutlineUser } from "react-icons/hi2";
 import Link from "next/link";
-import React from "react";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
-
 import NavButtons from "../ui/NavButtons";
 import MobileDrawer from "./MobileDrawer";
+import { useAppContext } from "@/context/AppContext";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import backendApi from "@/common/BackendApi";
 
 const Navbar = () => {
+  const {token} = useAppContext()
+  const [role , setRole]= useState("guest")
+  const getRole = () => {
+    switch (role) {
+      case "guest":
+      "میهمان"
+        break;
+      case "Admin" :
+          "ادمین"
+        break
+      case "User" :
+        "کاربر"
+        break
+      default:
+        break;
+    }
+  }
+  useEffect( async () => {
+    const {data} = await axios.get(backendApi.profile.url , {
+      headers:{
+        Authorization : `Bearer ${token}`
+      }
+    })
+    if (data.success) setRole(data.data)
+  } , [token])
 
   return (
     <>
-      <nav className={`container mx-auto flex items-center justify-between  py-4 px-6 `}>
+      <nav
+        className={`container mx-auto flex items-center justify-between  py-4 px-6 `}
+      >
         <div>
           <Link className="text-3xl font-medium txt-gradient" href="/">
             سامان شاپ
@@ -44,7 +74,12 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center space-x-4">
-          <Link href="/admin" className="block  bg-black px-2 rounded text-sm text-white ">ادمین</Link>
+          <Link
+            href="/admin"
+            className="block  bg-black px-2 rounded text-sm text-white "
+          >
+            {getRole}
+          </Link>
           <Link href="/profile" className="hover:text-black ">
             <HiOutlineUser className="h-6 w-6 text-gray-700" />
           </Link>
