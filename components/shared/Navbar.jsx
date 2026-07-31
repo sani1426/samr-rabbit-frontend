@@ -28,14 +28,14 @@ const Navbar = () => {
         break;
     }
   }
-  useEffect( async () => {
-    const {data} = await axios.get(backendApi.profile.url , {
-      headers:{
-        Authorization : `Bearer ${token}`
-      }
-    })
-    if (data.success) setRole(data.data)
-  } , [token])
+  // useEffect( async () => {
+  //   const {data} = await axios.get(backendApi.profile.url , {
+  //     headers:{
+  //       Authorization : `Bearer ${token}`
+  //     }
+  //   })
+  //   if (data.success) setRole(data.data)
+  // } , [token])
 
   return (
     <>

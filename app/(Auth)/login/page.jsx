@@ -26,16 +26,17 @@ const page = () => {
     const {data} = await axios.post(backendApi.login.url , {
       email , password
     })
-    setLoading(false)
+  
     if (data.success) {
       toast.success(data.message)
       setToken(data.token)
       router.push("/")
-    } else {
+    } else if (data.error) {
       toast.error(data.message)
       setEmail("")
       setPassword("")
     }
+      setLoading(false);
   };
   return (
     <div className="flex">

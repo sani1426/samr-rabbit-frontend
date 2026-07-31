@@ -28,7 +28,7 @@ const page = () => {
       toast.success(data.message)
       setToken(data.token)
       router.push("/")
-    } else {
+    } else if(data.error) {
       toast.error(data.message)
       setName("")
       setEmail("")
