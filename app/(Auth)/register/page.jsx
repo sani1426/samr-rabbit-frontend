@@ -20,20 +20,20 @@ const page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true) ; 
-    const {data} = await axios.post(backendApi.register.url , {
+    const response = await axios.post(backendApi.register.url , {
       name , email , password
     })
-    setLoading(false)
-    if (data.success) {
-      toast.success(data.message)
-      setToken(data.token)
-      router.push("/")
-    } else if(data.error) {
-      toast.error(data.message)
+    if (response.status === 201) {
+ toast.success(response.data.message);
+ setToken(response.data.token);
+ router.push("/");
+    } else {
+   toast.error(response.data.message)
       setName("")
       setEmail("")
       setPassword("")
     }
+
   };
   return (
     <div className="flex">
