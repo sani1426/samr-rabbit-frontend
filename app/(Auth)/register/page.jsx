@@ -22,7 +22,11 @@ const page = () => {
     setLoading(true) ; 
    const result = await fetch(backendApi.register.url, {
      method: "POST",
-     body: { name , email , password}})
+     body: { name , email , password},
+     headers: {
+       "Content-Type": "application/json"
+     }
+    })
     const  response =  await result.json()
     if (response.success) {
  toast.success(response.data.message);
