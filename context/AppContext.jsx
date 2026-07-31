@@ -24,40 +24,6 @@ const AppContextProvider = ({ children }) => {
     });
   }, []);
 
-  const Register = async (name, email, password) => {
-    try {
-      const { data } = await axios.post(backendApi.register.url, {
-        name,
-        email,
-        password,
-      });
-      if (data.success) {
-        toast.success(data.message);
-        setToken(data.token);
-        return true;
-      }
-    } catch (error) {
-         toast.error(error);
-         return false;
-    }
-    
-  };
-  const LoginUser = async (email, password) => {
-    const { data } = await axios.post(backendApi.login.url, {
-      email,
-      password,
-    });
-
-    if (data.success) {
-      toast.success(data.message);
-      setToken(data.token);
-      return true;
-    }
-    if (data.error) {
-      toast.error(data.message);
-      return false;
-    }
-  };
   const Logout = () => {
     setUser(null);
     setToken(null);
@@ -69,7 +35,7 @@ const AppContextProvider = ({ children }) => {
     }
   }, [token]);
   return (
-    <AppContext.Provider value={{ user, token, Register, LoginUser, Logout }}>
+    <AppContext.Provider value={{ user,setUser , token, setToken ,Logout }}>
       {children}
     </AppContext.Provider>
   );

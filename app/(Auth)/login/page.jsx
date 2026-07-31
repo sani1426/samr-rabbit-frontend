@@ -1,10 +1,13 @@
 "use client"
 
+import backendApi from "@/common/BackendApi"
 import LoginImage from "@/components/ui/LoginImage"
 import { useAppContext } from "@/context/AppContext"
+import axios from "axios"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { toast } from "sonner"
 
 
 
@@ -13,22 +16,25 @@ const page = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading , setLoading] = useState(false)
-  const {LoginUser , token } = useAppContext()
+  const {token , setToken } = useAppContext()
   useEffect(() => {
     if (token) router.push("/")
   } , [])
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await LoginUser(email, password);
-    console.log(response);
-    if (response) {
-      setLoading(false);
-      router.push("/");
+    const {data} = await axios.post(backendApi.login.url , {
+      email , password
+    })
+    setLoading(false)
+    if (data.success) {
+      toast.success(data.message)
+      setToken(data.token)
+      router.push("/")
     } else {
-      setLoading(false);
-      setEmail("");
-      setPassword("");
+      toast.error(data.message)
+      setEmail("")
+      setPassword("")
     }
   };
   return (

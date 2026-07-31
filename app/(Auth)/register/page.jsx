@@ -5,11 +5,14 @@ import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
 import {useRouter} from "next/navigation";
+import axios from "axios";
+import backendApi from "@/common/BackendApi";
+import { toast } from "sonner";
 
 
 const page = () => {
   const router = useRouter();
-  const {Register} = useAppContext()
+  const {setToken} = useAppContext()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -17,17 +20,20 @@ const page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true) ; 
-   const response = await Register(name , email , password) ; 
-   console.log(response);
-  if(response){
+    const {data} = await axios.post(backendApi.register.url , {
+      name , email , password
+    })
     setLoading(false)
-    router.push("/")
-  }else {
-    setLoading(false)
-    setName("") ;
-    setEmail("") ;
-    setPassword("")
-  }
+    if (data.success) {
+      toast.success(data.message)
+      setToken(data.token)
+      router.push("/")
+    } else {
+      toast.error(data.message)
+      setName("")
+      setEmail("")
+      setPassword("")
+    }
   };
   return (
     <div className="flex">
