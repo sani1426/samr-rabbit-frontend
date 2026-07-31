@@ -16,35 +16,41 @@ const page = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [loading , setLoading]= useState(false);
+  const [loading , setLoading]= useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true) ; 
-   const result = await fetch(backendApi.register.url, {
-     method: "POST",
-     body: JSON.stringify({ name, email, password }),
-     headers: {
-       "Content-Type": "application/json",
-     },
-   });
-    const  response =  await result.json()
-    if (response.success) {
- toast.success(response.data.message);
- setToken(response.data.token);
- router.push("/");
-    } else {
-   toast.error(response.data.message)
-      setName("")
-      setEmail("")
-      setPassword("")
+    
+      setLoading(true);
+      const { data } = await axios.post(
+        backendApi?.register?.url,
+        {
+          name: name,
+          email: email,
+          password: password
+        }
+      );
+      setLoading(false);
+      if (data?.success) {
+        toast.success("succesfully registered ✨✨✨");
+        setToken(data?.token)
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
+      } else {
+        toast.error(data.message);
+        setSend(false);
+        setName("")
+        setEmail("")
+        setPassword("")
+      }
     }
-
-  };
+ 
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex-col justify-center items-center p-8 md:p-12">
         <form
-          onSubmit={(e) => handleSubmit(e)}
+          onSubmit={handleSubmit}
           className="w-full max-w-md bg-white p-8 rounded-lg border shadow-sm"
         >
           <div className="flex justify-center mb-6">
