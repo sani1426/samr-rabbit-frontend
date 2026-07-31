@@ -20,11 +20,11 @@ const page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true) ; 
-    const response = await axios.post(backendApi.register.url , {
-      name , email , password
-    })
-    console.log(response);
-    if (response.status === 201) {
+   const result = await fetch(backendApi.register.url, {
+     method: "POST",
+     body: JSON.stringify({ name , email , password}),})
+    const  response =  await result.json()
+    if (response.success) {
  toast.success(response.data.message);
  setToken(response.data.token);
  router.push("/");
