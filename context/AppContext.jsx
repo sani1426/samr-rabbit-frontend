@@ -45,7 +45,7 @@ const AppContextProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
-      getUserDetails()
+      getUserDetails(token)
     }
   }, [token]);
   return (

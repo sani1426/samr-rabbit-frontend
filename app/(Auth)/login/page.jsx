@@ -23,20 +23,28 @@ const page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const {data} = await axios.post(backendApi.login.url , {
-      email , password
-    })
-  
-    if (data.success) {
-      toast.success(data.message)
-      setToken(data.token)
-      router.push("/")
-    } else if (data.error) {
-      toast.error(data.message)
-      setEmail("")
-      setPassword("")
+    try {
+       const { data } = await axios.post(backendApi.login.url, {
+         email,
+         password,
+       });
+
+       if (data.success) {
+         toast.success(data.message);
+         setToken(data.token);
+         router.push("/");
+       } else if (data.error) {
+         toast.error(data.message);
+         setEmail("");
+         setPassword("");
+       }
+    } catch (error) {
+      setLoading(false)
+       toast.error(error.message);
+       setEmail("");
+       setPassword("");
     }
-      setLoading(false);
+   
   };
   return (
     <div className="flex">

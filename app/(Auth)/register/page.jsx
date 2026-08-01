@@ -21,26 +21,35 @@ const page = () => {
     e.preventDefault();
 
     setLoading(true);
-    const { data } = await axios.post(backendApi?.register?.url, {
-      name: name,
-      email: email,
-      password: password,
-    });
-    if (data?.error) {
+    try {
+      const { data } = await axios.post(backendApi?.register?.url, {
+        name: name,
+        email: email,
+        password: password,
+      });
+      if (data?.success) {
+        setLoading(false);
+        toast.success(data.message);
+  setToken(data?.token);
+  setTimeout(() => {
+    router.push("/");
+  }, 1000);
+      }else {
       setLoading(false);
       toast.error(data.message);
-      setSend(false);
+      setName("")
+      setEmail("")
+      setPassword("")
+      }
+
+    
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
       setName("");
       setEmail("");
       setPassword("");
     }
-
-    setLoading(false);
-    toast.success("succesfully registered ✨✨✨");
-    setToken(data?.token);
-    setTimeout(() => {
-      router.push("/");
-    }, 1000);
   };
 
   return (
