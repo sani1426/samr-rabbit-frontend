@@ -18,6 +18,19 @@ const AppContextProvider = ({ children }) => {
  
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const getUserDetails = async (token) => {
+    const {data} = await axios.get(backendApi.profile.url , {
+      headers:{
+        Authorization : `Bearer ${token}`
+      }
+    })
+    if (data.success) {
+      setUser(data?.data)
+      console.log(user);
+    } else {
+      console.log(`error ${data.message}`);
+    }
+  }
   useEffect(() => {
     setToken(() => {
       localStorage.getItem("token") ? localStorage.getItem("token") : null;
@@ -32,6 +45,7 @@ const AppContextProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
+      getUserDetails()
     }
   }, [token]);
   return (

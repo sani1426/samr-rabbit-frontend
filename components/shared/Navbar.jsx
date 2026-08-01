@@ -7,35 +7,28 @@ import NavButtons from "../ui/NavButtons";
 import MobileDrawer from "./MobileDrawer";
 import { useAppContext } from "@/context/AppContext";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import backendApi from "@/common/BackendApi";
+
 
 const Navbar = () => {
-  const {token} = useAppContext()
-  const [role , setRole]= useState("guest")
-  const getRole = () => {
-    switch (role) {
-      case "guest":
-      "میهمان"
-        break;
-      case "Admin" :
-          "ادمین"
-        break
-      case "User" :
-        "کاربر"
-        break
-      default:
-        break;
-    }
+  const {user} = useAppContext()
+  const [role , setRole]=useState("")
+
+  const getRole = (user) => {
+ switch (user?.role) {
+   case "Admin":
+     setRole("ادمین");
+     break;
+   case "User":
+     setRole("کاریر");
+     break;
+   default:
+    setRole("میهمان")
+     break;
+ }
   }
-  // useEffect( async () => {
-  //   const {data} = await axios.get(backendApi.profile.url , {
-  //     headers:{
-  //       Authorization : `Bearer ${token}`
-  //     }
-  //   })
-  //   if (data.success) setRole(data.data)
-  // } , [token])
+  useEffect(()=>{
+    getRole(user)
+  },[user])
 
   return (
     <>
@@ -78,7 +71,7 @@ const Navbar = () => {
             href="/admin"
             className="block  bg-black px-2 rounded text-sm text-white "
           >
-            {getRole}
+            {role}
           </Link>
           <Link href="/profile" className="hover:text-black ">
             <HiOutlineUser className="h-6 w-6 text-gray-700" />
