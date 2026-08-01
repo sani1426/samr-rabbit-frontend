@@ -4,48 +4,45 @@ import LoginImage from "@/components/ui/LoginImage";
 import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import backendApi from "@/common/BackendApi";
 import { toast } from "sonner";
 
-
 const page = () => {
   const router = useRouter();
-  const {setToken} = useAppContext()
+  const { setToken } = useAppContext();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [loading , setLoading]= useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-      setLoading(true);
-      const { data } = await axios.post(
-        backendApi?.register?.url,
-        {
-          name: name,
-          email: email,
-          password: password
-        }
-      );
+
+    setLoading(true);
+    const { data } = await axios.post(backendApi?.register?.url, {
+      name: name,
+      email: email,
+      password: password,
+    });
+    if (data?.error) {
       setLoading(false);
-      if (data?.success) {
-        toast.success("succesfully registered ✨✨✨");
-        setToken(data?.token)
-        setTimeout(() => {
-          router.push("/");
-        }, 1000);
-      } else {
-        toast.error(data.message);
-        setSend(false);
-        setName("")
-        setEmail("")
-        setPassword("")
-      }
+      toast.error(data.message);
+      setSend(false);
+      setName("");
+      setEmail("");
+      setPassword("");
     }
- 
+
+    setLoading(false);
+    toast.success("succesfully registered ✨✨✨");
+    setToken(data?.token);
+    setTimeout(() => {
+      router.push("/");
+    }, 1000);
+  };
+
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex-col justify-center items-center p-8 md:p-12">
