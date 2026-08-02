@@ -18,6 +18,7 @@ const AppContextProvider = ({ children }) => {
  
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [guestId, setGuestId] = useState();
   const getUserDetails = async (token) => {
     const {data} = await axios.get(backendApi.profile.url , {
       headers:{
@@ -35,12 +36,17 @@ const AppContextProvider = ({ children }) => {
     setToken(() => {
       localStorage.getItem("token") ? localStorage.getItem("token") : null;
     });
+   if (!token) {
+    setGuestId(`guest_${new Date().getTime()}`)
+   }
   }, []);
 
   const Logout = () => {
     setUser(null);
     setToken(null);
     localStorage.removeItem("token");
+    setGuestId(`guest_${new Date().getTime()}`);
+    localStorage.setItem("guestId" , guestId)
   };
   useEffect(() => {
     if (token) {

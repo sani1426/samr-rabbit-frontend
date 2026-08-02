@@ -1,5 +1,5 @@
-"use client"
-import {HiOutlineUser } from "react-icons/hi2";
+"use client";
+import { HiOutlineUser } from "react-icons/hi2";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
@@ -8,27 +8,26 @@ import MobileDrawer from "./MobileDrawer";
 import { useAppContext } from "@/context/AppContext";
 import { useEffect, useState } from "react";
 
-
 const Navbar = () => {
-  const {user} = useAppContext()
-  const [role , setRole]=useState("")
+  const { user } = useAppContext();
+  const [role, setRole] = useState("");
 
   const getRole = (user) => {
- switch (user?.role) {
-   case "Admin":
-     setRole("ادمین");
-     break;
-   case "User":
-     setRole("کاریر");
-     break;
-   default:
-    setRole("میهمان")
-     break;
- }
-  }
-  useEffect(()=>{
-    getRole(user)
-  },[user])
+    switch (user?.role) {
+      case "Admin":
+        setRole("ادمین");
+        break;
+      case "User":
+        setRole("کاریر");
+        break;
+      default:
+        setRole("میهمان");
+        break;
+    }
+  };
+  useEffect(() => {
+    getRole(user);
+  }, [user]);
 
   return (
     <>

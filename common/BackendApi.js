@@ -31,7 +31,7 @@ const backendApi = {
         methode : "delete" ,
         access : "Private/Admin" , 
     },
-    getAllProducts : {
+    AllProducts : {
         url : `${backendUrl}/products` ,
         methode : "get" ,
         access : "Public" , 
