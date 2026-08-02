@@ -1,5 +1,6 @@
 
 
+import backendApi from '@/common/BackendApi';
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -21,10 +22,10 @@ const initialState = {
 //  Async thunk to handle user login
 export const loginUser = createAsyncThunk('auth/loginUser', async (userData , {rejectWithValue}) => {
     try {
-        const response = await axios.post(`${import.meta.env.BACKEND_URL}users/login` , userData);
-        localStorage.setItem("userInfo" , JSON.stringify(response.data.user))
+        const response = await axios.post(backendApi.login.url , userData);
+        localStorage.setItem("userInfo" , JSON.stringify(response.data.data))
         localStorage.setItem("userToken" , response.data.token)
-        return response.data.user;
+        return response.data.data;
     } catch (error) {
         return rejectWithValue(error.response.data);
     }
@@ -33,10 +34,10 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (userData , {r
 //  Async thunk to handle user registration
 export const registerUser = createAsyncThunk('auth/registerUser', async (userData , {rejectWithValue}) => {
     try {
-        const response = await axios.post(`${import.meta.env.BACKEND_URL}users/register` , userData);
-        localStorage.setItem("userInfo" , JSON.stringify(response.data.user))
+        const response = await axios.post(backendApi.register.url , userData);
+        localStorage.setItem("userInfo" , JSON.stringify(response.data.data))
         localStorage.setItem("userToken" , response.data.token)
-        return response.data.user;
+        return response.data.data;
     } catch (error) {
         return rejectWithValue(error.response.data);
     }
