@@ -32,7 +32,9 @@ const page = () => {
        if (data.success) {
          toast.success(data.message);
          setToken(data.token);
-         router.push("/");
+          setTimeout(() => {
+            router.push("/");
+          }, 1000);
        } else if (data.error) {
          toast.error(data.message);
          setEmail("");
