@@ -1,12 +1,11 @@
 "use client"
 
-import backendApi from "@/common/BackendApi"
 import LoginImage from "@/components/ui/LoginImage"
-import { useAppContext } from "@/context/AppContext"
-import axios from "axios"
+import {loginUser} from "@/redux/slices/authSlice"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
 import { toast } from "sonner"
 
 
@@ -16,37 +15,13 @@ const page = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading , setLoading] = useState(false)
-  const {token , setToken } = useAppContext()
-  useEffect(() => {
-    if (token) router.push("/")
-  } , [])
+const dispatch = useDispatch()
+  // useEffect(() => {
+  //   if (token) router.push("/")
+  // } , [])
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-       const { data } = await axios.post(backendApi.login.url, {
-         email,
-         password,
-       });
-
-       if (data.success) {
-         toast.success(data.message);
-         setToken(data.token);
-          setTimeout(() => {
-            router.push("/");
-          }, 1000);
-       } else if (data.error) {
-         toast.error(data.message);
-         setEmail("");
-         setPassword("");
-       }
-    } catch (error) {
-      setLoading(false)
-       toast.error(error.message);
-       setEmail("");
-       setPassword("");
-    }
-   
+    dispatch(loginUser({email , password}))
   };
   return (
     <div className="flex">

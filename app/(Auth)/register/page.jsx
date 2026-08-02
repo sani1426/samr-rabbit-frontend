@@ -1,55 +1,24 @@
 "use client";
 
 import LoginImage from "@/components/ui/LoginImage";
-import { useAppContext } from "@/context/AppContext";
+import {registerUser} from "@/redux/slices/authSlice"
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import backendApi from "@/common/BackendApi";
-import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+
 
 const page = () => {
   const router = useRouter();
-  const { setToken } = useAppContext();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setLoading(true);
-    try {
-      const { data } = await axios.post(backendApi?.register?.url, {
-        name: name,
-        email: email,
-        password: password,
-      });
-      if (data?.success) {
-        setLoading(false);
-        toast.success(data.message);
-  setToken(data?.token);
-  setTimeout(() => {
-    router.push("/");
-  }, 1000);
-      }else {
-      setLoading(false);
-      toast.error(data.message);
-      setName("")
-      setEmail("")
-      setPassword("")
-      }
-
-    
-    } catch (error) {
-      setLoading(false);
-      toast.error(error.message);
-      setName("");
-      setEmail("");
-      setPassword("");
-    }
+    dispatch(registerUser({name , email , password}))
   };
 
   return (

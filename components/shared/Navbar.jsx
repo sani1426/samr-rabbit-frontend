@@ -5,29 +5,27 @@ import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
 import NavButtons from "../ui/NavButtons";
 import MobileDrawer from "./MobileDrawer";
-import { useAppContext } from "@/context/AppContext";
+
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const { user } = useAppContext();
-  const [role, setRole] = useState("");
 
-  const getRole = (user) => {
-    switch (user?.role) {
-      case "Admin":
-        setRole("ادمین");
-        break;
-      case "User":
-        setRole("کاریر");
-        break;
-      default:
-        setRole("میهمان");
-        break;
-    }
-  };
-  useEffect(() => {
-    getRole(user);
-  }, [user]);
+  const [role, setRole] = useState("میهمان");
+
+  // const getRole = (user) => {
+  //   switch (user?.role) {
+  //     case "Admin":
+  //       setRole("ادمین");
+  //       break;
+  //     case "User":
+  //       setRole("کاریر");
+  //       break;
+  //     default:
+  //       setRole("میهمان");
+  //       break;
+  //   }
+  // };
+
 
   return (
     <>

@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
 import { AppContextProvider } from "@/context/AppContext";
+import ReduxProvider from "@/redux/provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -23,9 +24,11 @@ export default function RootLayout({ children }) {
       className={cn(myFont.className, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <AppContextProvider>
-          <main>{children}</main>
-        </AppContextProvider>
+        <ReduxProvider>
+          <AppContextProvider>
+            <main>{children}</main>
+          </AppContextProvider>
+        </ReduxProvider>
         <Toaster position="top-right" richColors={true} />
       </body>
     </html>
