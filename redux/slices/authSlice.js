@@ -4,12 +4,27 @@ import backendApi from '@/common/BackendApi';
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const getuserInfo = () => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null || null;
+  }
+  return null;
+};
+const setGuestId = () => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("guestId", initialGuestId);
+    return localStorage.getItem("guestId") || `guest_${new Date().getTime()}` || null;
+     ;
+  }
+  return null;
+};
 // Retrieve user information from local storage
-const userFormStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null; 
+const userFormStorage = getuserInfo()
 
 //  Check for an existing guest ID in local storage Or generate a new one
-const initialGuestId = localStorage.getItem("guestId") || `guest_${new Date().getTime()}`;
-localStorage.setItem("guestId" , initialGuestId)
+const initialGuestId = setGuestId();
 
 //  Initial state
 const initialState = {
