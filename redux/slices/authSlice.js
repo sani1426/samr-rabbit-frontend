@@ -14,8 +14,7 @@ const getuserInfo = () => {
 };
 const setGuestId = () => {
   if (typeof window !== "undefined") {
-    localStorage.setItem("guestId", initialGuestId);
-    return localStorage.getItem("guestId") || `guest_${new Date().getTime()}` || null;
+    return localStorage.getItem("guestId") || `guest_${new Date().getTime()}`  || null;
      ;
   }
   return null;
@@ -25,6 +24,7 @@ const userFormStorage = getuserInfo()
 
 //  Check for an existing guest ID in local storage Or generate a new one
 const initialGuestId = setGuestId();
+
 
 //  Initial state
 const initialState = {
@@ -42,6 +42,7 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (userData , {r
         localStorage.setItem("userToken" , response.data.token)
         return response.data.data;
     } catch (error) {
+         localStorage.setItem("guestId", initialGuestId);
         return rejectWithValue(error.response.data);
     }
 } )
@@ -54,6 +55,7 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
         localStorage.setItem("userToken" , response.data.token)
         return response.data.data;
     } catch (error) {
+         localStorage.setItem("guestId", initialGuestId);
         return rejectWithValue(error.response.data);
     }
 } )
