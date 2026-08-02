@@ -7,6 +7,7 @@ import FilterSideBar from "@/components/shared/FilterSideBar"
 
 
 import SortOptions from "@/components/shared/SortOptions"
+import axios from "axios"
 import { Suspense, useEffect, useRef, useState } from "react"
 import {FaFilter} from "react-icons/fa"
 import { toast } from "sonner"
