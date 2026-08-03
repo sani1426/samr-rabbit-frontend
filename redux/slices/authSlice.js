@@ -42,7 +42,7 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (userData , {r
         localStorage.setItem("userToken" , response.data.token)
         return response.data.data;
     } catch (error) {
-         localStorage.setItem("guestId", initialGuestId);
+      
         return rejectWithValue(error.response.data);
     }
 } )
@@ -55,7 +55,6 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
         localStorage.setItem("userToken" , response.data.token)
         return response.data.data;
     } catch (error) {
-         localStorage.setItem("guestId", initialGuestId);
         return rejectWithValue(error.response.data);
     }
 } )
