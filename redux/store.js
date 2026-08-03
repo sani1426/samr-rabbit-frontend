@@ -6,8 +6,8 @@ import productReducer from "./slices/productSlice"
 
 const store = configureStore({
   reducer: {
-    // auth : authReducer,
-    // products : productReducer
+    auth : authReducer,
+    products : productReducer
   },
 });
 
