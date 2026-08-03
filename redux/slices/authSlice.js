@@ -14,6 +14,7 @@ const getuserInfo = () => {
 };
 const setGuestId = () => {
   if (typeof window !== "undefined") {
+    localStorage.setItem("guestId", `guest_${new Date().getTime()}`);
     return localStorage.getItem("guestId") || `guest_${new Date().getTime()}`  || null;
      ;
   }
@@ -37,7 +38,9 @@ const initialState = {
 //  Async thunk to handle user login
 export const loginUser = createAsyncThunk('auth/loginUser', async (userData , {rejectWithValue}) => {
     try {
-        const response = await axios.post(backendApi.login.url , userData);
+        const response = await axios.post(backendApi.login.url, userData, {
+          withCredentials: true,
+        });
         localStorage.setItem("userInfo" , JSON.stringify(response.data.data))
         localStorage.setItem("userToken" , response.data.token)
         return response.data.data;
@@ -50,7 +53,9 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (userData , {r
 //  Async thunk to handle user registration
 export const registerUser = createAsyncThunk('auth/registerUser', async (userData , {rejectWithValue}) => {
     try {
-        const response = await axios.post(backendApi.register.url , userData);
+        const response = await axios.post(backendApi.register.url, userData, {
+          withCredentials: true,
+        });
         localStorage.setItem("userInfo" , JSON.stringify(response.data.data))
         localStorage.setItem("userToken" , response.data.token)
         return response.data.data;
