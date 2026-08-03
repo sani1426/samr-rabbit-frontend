@@ -1,6 +1,7 @@
 const backendUrl = "https://sami-rabbit-backend.vercel.app/api";
 
 const backendApi = {
+  // auth
   register: {
     url: `${backendUrl}/users/register`,
     method: "post",
@@ -16,6 +17,7 @@ const backendApi = {
     method: "get",
     access: "Private",
   },
+  //  products
   createNewProduct: {
     url: `${backendUrl}/products`,
     method: "post",
@@ -53,6 +55,27 @@ const backendApi = {
     url: `${backendUrl}/products/similar`,
     method: "get",
   },
+  // Cart
+  addToCart : {
+    url : `${backendUrl}/cart` ,
+    method : "post" ,
+  },
+  updateQuantity : {
+    url : `${backendUrl}/cart` ,
+    method : "put"
+  },
+  deleteFromCart : {
+    url : `${backendUrl}/cart` ,
+    method : "delete"
+  },
+  getCart : {
+    url: `${backendUrl}/cart` ,
+    method : "get"
+  },
+  mergeCart : {
+    url : `${backendUrl}/cart/merge` ,
+    method : "post"
+  }
 };
 
 export default backendApi;
