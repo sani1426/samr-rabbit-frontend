@@ -190,7 +190,6 @@ const productsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       });
-      
   },
 });
 

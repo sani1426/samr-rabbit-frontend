@@ -3,6 +3,7 @@
 import backendApi from '@/common/BackendApi';
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toast from "sonner"
 
 const getuserInfo = () => {
   if (typeof window !== "undefined") {
@@ -41,11 +42,12 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (userData , {r
         const response = await axios.post(backendApi.login.url, userData, {
           withCredentials: true,
         });
+        toast.success(response.data?.message)
         localStorage.setItem("userInfo" , JSON.stringify(response.data.data))
         localStorage.setItem("userToken" , response.data.token)
         return response.data.data;
     } catch (error) {
-      
+        toast.error(error.response.data)
         return rejectWithValue(error.response.data);
     }
 } )

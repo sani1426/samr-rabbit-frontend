@@ -88,6 +88,15 @@ const backendApi = {
   finalizeCheckout : {
     url : `${backendUrl}/checkout/:id/finalize` ,
     method : "post"
+  },
+  //  Oreders
+  getMyOrders : {
+    url : `${backendUrl}/orders/my-orders` ,
+    method : "get"
+  },
+  getOrderDetails : {
+    url : `${backendUrl}/orders`,
+    method : "get"
   }
 };
 
