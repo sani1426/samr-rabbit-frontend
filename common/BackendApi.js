@@ -1,4 +1,4 @@
-const backendUrl = "https://sami-rabbit-backend.vercel.app/api";
+export const backendUrl = "https://sami-rabbit-backend.vercel.app/api";
 
 const backendApi = {
   // auth
@@ -56,24 +56,37 @@ const backendApi = {
     method: "get",
   },
   // Cart
-  addToCart : {
-    url : `${backendUrl}/cart` ,
-    method : "post" ,
+  addToCart: {
+    url: `${backendUrl}/cart`,
+    method: "post",
   },
-  updateQuantity : {
-    url : `${backendUrl}/cart` ,
-    method : "put"
+  updateQuantity: {
+    url: `${backendUrl}/cart`,
+    method: "put",
   },
-  deleteFromCart : {
-    url : `${backendUrl}/cart` ,
-    method : "delete"
+  deleteFromCart: {
+    url: `${backendUrl}/cart`,
+    method: "delete",
   },
-  getCart : {
-    url: `${backendUrl}/cart` ,
-    method : "get"
+  getCart: {
+    url: `${backendUrl}/cart`,
+    method: "get",
   },
-  mergeCart : {
-    url : `${backendUrl}/cart/merge` ,
+  mergeCart: {
+    url: `${backendUrl}/cart/merge`,
+    method: "post",
+  },
+  //  checkOut
+  createCheckout: {
+    url: `${backendUrl}/checkout`,
+    method: "post",
+  },
+  updateCheckout: {
+    url: `${backendUrl}/checkout/:id/pay`,
+    method: "put",
+  },
+  finalizeCheckout : {
+    url : `${backendUrl}/checkout/:id/finalize` ,
     method : "post"
   }
 };
