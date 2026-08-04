@@ -3,7 +3,7 @@
 import backendApi from '@/common/BackendApi';
 import { createSlice , createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import toast from "sonner"
+import {toast} from "sonner"
 
 const getuserInfo = () => {
   if (typeof window !== "undefined") {
