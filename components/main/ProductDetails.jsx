@@ -5,29 +5,13 @@ import ShowImage from "../ui/ShowImage";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import ProductGrid from "./ProductGrid";
-import axios from "axios";
-import backendApi from "@/common/BackendApi";
-import { useParams } from "next/navigation";
 
-const ProductDetails =  () => {
-  const {id} = useParams()
- const [selectedProduct , setSelectedProduct] = useState({})
- const [similarProducts, setSimilarProducts] = useState([]);
+const ProductDetails = ({ selectedProduct, similarProducts }) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [quantity, setQauntity] = useState(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const fetchData = async () => {
-    console.log(id);
-    const {data} = await axios.get(`${backendApi.getProductDetails.url}/${id}`)
-    const response = await axios.get(`${backendApi.getSimilars.url}/${id}`)
-    const result = response?.data
-    if (data?.success) setSelectedProduct(data?.data)
-    if (result?.success) setSimilarProducts(result?.data)
-  }
-useEffect(() => {
-fetchData()
-} ,[])
+
   const handleQuantityChange = (action) => {
     if (action === "plus") setQauntity((prev) => prev + 1);
     if (action === "minus" && quantity > 1) setQauntity((prev) => prev - 1);
