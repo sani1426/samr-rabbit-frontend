@@ -11,12 +11,7 @@ import axios from "axios"
 import { Suspense } from "react"
 
 
-
-
-const HomePage = async () => {
-  let allProducts = [] ;
-  let bestProduct ;
-  let similarProducts = [
+  const similarProducts = [
     {
       name: "پیراهن دکمه‌دار کلاسیک آکسفورد",
       description:
@@ -130,6 +125,11 @@ const HomePage = async () => {
       numReviews: 10,
     },
   ];
+
+const HomePage = async () => {
+  let allProducts = [] ;
+  let bestProduct ;
+
   const {data} = await axios.get(backendApi.getAllProducts.url , {
     params : {
       gender : "Women"
@@ -158,13 +158,16 @@ const HomePage = async () => {
 
       {/* best seller section */}
       <h2 className="text-3xl text-center font-bold mb-4">محبوب ترین هفته</h2>
-      <ProductDetails selectedProduct={bestProduct} similarProducts={similarProducts} />
+      <ProductDetails
+        selectedProduct={bestProduct}
+        similarProducts={similarProducts}
+      />
 
       <div className="container mx-auto">
         <h2 className="text-3xl text-center font-bold mb-4">
           زنانه های پر طرفدار
         </h2>
-        <Suspense fallback ={<Spinner />}>
+        <Suspense fallback={<Spinner />}>
           <ProductGrid products={allProducts} />
         </Suspense>
       </div>
