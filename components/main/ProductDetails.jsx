@@ -71,7 +71,7 @@ fetchData()
             <div className="mb-4">
               <p className="text-gray-700">رنگبندی :</p>
               <div className="flex gap-2 mt-2">
-                {selectedProduct.colors.map((color, index) => (
+                {selectedProduct?.colors.map((color, index) => (
                   <button
                     style={{
                       backgroundColor: mapColor(color),
@@ -93,7 +93,7 @@ fetchData()
             <div className="mb-4">
               <p className="text-gray-700">سایز بندی :</p>
               <div className="flex gap-2 mt-2">
-                {selectedProduct.sizes.map((size, index) => (
+                {selectedProduct?.sizes.map((size, index) => (
                   <button
                     className={`px-4 py-2 rounded border ${
                       selectedSize == size ? "bg-black text-white" : ""
