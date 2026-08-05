@@ -15,7 +15,11 @@ import { Suspense } from "react"
 
 const HomePage = async () => {
   let allProducts = []
-  const {data} = await axios.get(backendApi.getAllProducts.url)
+  const {data} = await axios.get(backendApi.getAllProducts.url , {
+    params : {
+      gender : "Women"
+    }
+  })
   if (data?.success) {
     allProducts = data?.data
   }
