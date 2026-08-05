@@ -29,6 +29,7 @@ const HomePage = async () => {
   const result = response.data
   if (result.success) {
     bestProduct = result.data
+    const id = result.data._id
     const res = await axios.get(`${backendApi.getSimilars.url}/${id}`)
     const ans = res?.data
     if (ans.success) similarProducts = ans.data
