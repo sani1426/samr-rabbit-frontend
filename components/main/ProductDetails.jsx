@@ -22,8 +22,8 @@ const ProductDetails =  () => {
     const {data} = await axios.get(`${backendApi.getProductDetails.url}/${id}`)
     const response = await axios.get(`${backendApi.getSimilars.url}/${id}`)
     const result = response?.data
-    if (data?.success) setSelectedProduct(data.data)
-    if (result?.success) setSimilarProducts(result.data)
+    if (data?.success) setSelectedProduct(data?.data)
+    if (result?.success) setSimilarProducts(result?.data)
   }
 useEffect(() => {
 fetchData()
@@ -52,21 +52,21 @@ fetchData()
     <div className="p-6">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg">
         <div className="flex flex-col md:flex-row  md:gap-x-8">
-          <ShowImage images={selectedProduct.images} />
+          <ShowImage images={selectedProduct?.images} />
 
           {/* right section */}
           <div className="md:w-1/2 md:ml-10">
             <h1 className="text-2xl md:text-3xl font-semibold mb-2">
-              {selectedProduct.name}
+              {selectedProduct?.name}
             </h1>
             <p className="text-lg text-gray-600 mb-1 line-through">
-              {selectedProduct.originalPrice &&
-                `${selectedProduct.originalPrice}`}
+              {selectedProduct?.originalPrice &&
+                `${selectedProduct?.originalPrice}`}
             </p>
             <p className="text-xl text-gray-600 mb-2">
-              {selectedProduct.price}
+              {selectedProduct?.price}
             </p>
-            <p className="text-gray-600 mb-4">{selectedProduct.description}</p>
+            <p className="text-gray-600 mb-4">{selectedProduct?.description}</p>
 
             <div className="mb-4">
               <p className="text-gray-700">رنگبندی :</p>
