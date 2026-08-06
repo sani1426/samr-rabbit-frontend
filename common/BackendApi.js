@@ -85,19 +85,19 @@ const backendApi = {
     url: `${backendUrl}/checkout/:id/pay`,
     method: "put",
   },
-  finalizeCheckout : {
-    url : `${backendUrl}/checkout/:id/finalize` ,
-    method : "post"
+  finalizeCheckout: {
+    url: `${backendUrl}/checkout/:id/finalize`,
+    method: "post",
   },
   //  Oreders
-  getMyOrders : {
-    url : `${backendUrl}/orders/my-orders` ,
-    method : "get"
+  getMyOrders: {
+    url: `${backendUrl}/orders/my-orders`,
+    method: "get",
   },
-  getOrderDetails : {
-    url : `${backendUrl}/orders`,
-    method : "get"
-  }
+  getOrderDetails: {
+    url: `${backendUrl}/orders`,
+    method: "get",
+  },
 };
 
 export default backendApi;
