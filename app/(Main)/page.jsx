@@ -165,9 +165,13 @@ const HomePage = async () => {
   if (data?.success) {
     allProducts = data?.data
   }
-  // const response = await axios.get(backendApi.getBestSeller.url)
-  // const result = response.data
-  // if (result.success) {
+  const response = await axios.get(backendApi.getBestSeller.url)
+  const result = response.data
+  if (result.success) {
+    console.log(result);
+  }else{
+    console.log(result);
+  }
   //   bestProduct = result.data
   //   const id = result.data._id
   //   console.log(id);
