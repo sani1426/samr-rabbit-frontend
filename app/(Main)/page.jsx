@@ -203,8 +203,8 @@ const HomePage = async () => {
       numReviews: 8,
     }
     }
-  
   }
+  getBestSeller()
 
   //   bestProduct = result.data
   //   const id = result.data._id
