@@ -2,7 +2,7 @@
 
 import { mapColor } from "@/utils/AppUtility";
 import ShowImage from "../ui/ShowImage";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { toast } from "sonner";
 import ProductGrid from "./ProductGrid";
 
@@ -127,11 +127,11 @@ const ProductDetails = ({ selectedProduct, similarProducts }) => {
                 <tbody>
                   <tr>
                     <td className="py-1">برند</td>
-                    <td className="py-1">{selectedProduct.brand}</td>
+                    <td className="py-1">{selectedProduct?.brand}</td>
                   </tr>
                   <tr>
                     <td className="py-1">متریال :</td>
-                    <td className="py-1">{selectedProduct.material}</td>
+                    <td className="py-1">{selectedProduct?.material}</td>
                   </tr>
                 </tbody>
               </table>
