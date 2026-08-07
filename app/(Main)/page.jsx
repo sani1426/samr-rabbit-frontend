@@ -128,7 +128,34 @@ import { Suspense } from "react"
 
 const HomePage = async () => {
   let allProducts = [] ;
-  let bestProduct ;
+  let bestProduct =    {
+      name: "پیراهن هاوایی طرح‌دار (ریزورت)",
+      description:
+        "این پیراهن طرح‌دار که برای تابستان طراحی شده، برای تعطیلات یا سفرهای آخر هفته عالی است. دارای تن‌خور آزاد، آستین‌های کوتاه و یقه کوبایی (کمپ) است. طرح استوایی سرتاسری آن حس و حالی شاد و پرانرژی می‌بخشد.",
+      price: 29.99,
+      discountPrice: 22.99,
+      countInStock: 25,
+      sku: "PRNT-RES-004",
+      category: "Top Wear",
+      brand: "Beach Breeze",
+      sizes: ["S", "M", "L", "XL"],
+      colors: ["قرمز", "سرمه ای"],
+      collections: "Vacation Wear",
+      material: "Viscose",
+      gender: "Men",
+      images: [
+        {
+          url: "https://picsum.photos/500/500?random=45",
+          altText: "Printed Resort Shirt Front View",
+        },
+        {
+          url: "https://picsum.photos/500/500?random=1",
+          altText: "Printed Resort Shirt Back View",
+        },
+      ],
+      rating: 4.4,
+      numReviews: 10,
+    }
   const {data} = await axios.get(backendApi.getAllProducts.url , {
     params : {
       gender : "Women"
@@ -137,84 +164,12 @@ const HomePage = async () => {
   if (data?.success) {
     allProducts = data?.data
   }
-  const getBestSeller = async () => {
-    try {
-        const { data } = await axios.get(backendApi.getBestSeller.url);
-        if (data.success) {
-          bestProduct = data.data;
-        } else {
-          bestProduct =  {
-      name: "hajfhi",
-      description:
-        "این پیراهن جین راحت از پارچه جین پنبه‌ای سبک ساخته شده است. دارای تن‌خور معمولی (راسته)، دکمه‌های فشاری و لبه پایینی صاف است. با جزئیات الهام‌گرفته از استایل وسترن، این پیراهن برای پوشیدن روی تیشرت یا به تنهایی عالی است.",
-      price: 49.99,
-      discountPrice: 44.99,
-      countInStock: 15,
-      sku: "CAS-DEN-003",
-      category: "Top Wear",
-      brand: "Street Style",
-      sizes: ["S", "M", "L", "XL", "XXL"],
-      colors: ["آبی روشن", "جین تیره سنگ‌شور"],
-      collections: "Casual Wear",
-      material: "Denim",
-      gender: "Men",
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=43",
-          altText: "Casual Denim Shirt Front View",
-        },
-        {
-          url: "https://picsum.photos/500/500?random=44",
-          altText: "Casual Denim Shirt Back View",
-        },
-      ],
-      rating: 4.6,
-      numReviews: 8,
-    }
-        }
-    } catch (error) {
-      console.log(error);
-      bestProduct =  {
-      name: "پیراهن جین کژوال",
-      description:
-        "این پیراهن جین راحت از پارچه جین پنبه‌ای سبک ساخته شده است. دارای تن‌خور معمولی (راسته)، دکمه‌های فشاری و لبه پایینی صاف است. با جزئیات الهام‌گرفته از استایل وسترن، این پیراهن برای پوشیدن روی تیشرت یا به تنهایی عالی است.",
-      price: 49.99,
-      discountPrice: 44.99,
-      countInStock: 15,
-      sku: "CAS-DEN-003",
-      category: "Top Wear",
-      brand: "Street Style",
-      sizes: ["S", "M", "L", "XL", "XXL"],
-      colors: ["آبی روشن", "جین تیره سنگ‌شور"],
-      collections: "Casual Wear",
-      material: "Denim",
-      gender: "Men",
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=43",
-          altText: "Casual Denim Shirt Front View",
-        },
-        {
-          url: "https://picsum.photos/500/500?random=44",
-          altText: "Casual Denim Shirt Back View",
-        },
-      ],
-      rating: 4.6,
-      numReviews: 8,
-    }
-    }
-  }
-  getBestSeller()
-
-  //   bestProduct = result.data
-  //   const id = result.data._id
-  //   console.log(id);
-    // const res = await axios.get(`${backendApi.getSimilars.url}/${id}`)
-    // const ans = res?.data
-    // if (ans.success) similarProducts = ans.data
-  // }
+const getBestSeller = async () => {
+  const {data} = await axios.get(backendApi.getBestSeller.url)
+  console.log(data);
+}
  
-
+getBestSeller()
   return (
     <>
       <Hero />
