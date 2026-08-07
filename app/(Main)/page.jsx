@@ -128,33 +128,12 @@ import { Suspense } from "react"
 
 const HomePage = async () => {
   let allProducts = [] ;
-  let bestProduct =    {
-      name: "پیراهن هاوایی طرح‌دار (ریزورت)",
-      description:
-        "این پیراهن طرح‌دار که برای تابستان طراحی شده، برای تعطیلات یا سفرهای آخر هفته عالی است. دارای تن‌خور آزاد، آستین‌های کوتاه و یقه کوبایی (کمپ) است. طرح استوایی سرتاسری آن حس و حالی شاد و پرانرژی می‌بخشد.",
-      price: 29.99,
-      discountPrice: 22.99,
-      countInStock: 25,
-      sku: "PRNT-RES-004",
-      category: "Top Wear",
-      brand: "Beach Breeze",
-      sizes: ["S", "M", "L", "XL"],
-      colors: ["قرمز", "سرمه ای"],
-      collections: "Vacation Wear",
-      material: "Viscose",
-      gender: "Men",
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=45",
-          altText: "Printed Resort Shirt Front View",
-        },
-        {
-          url: "https://picsum.photos/500/500?random=1",
-          altText: "Printed Resort Shirt Back View",
-        },
-      ],
-      rating: 4.4,
-      numReviews: 10,
+  let bestProduct ;
+    const response = await axios.get(backendApi.getBestSeller.url);
+    const result = await response.data;
+    console.log(result);
+    if (result.success) {
+      bestProduct = result?.data[0]
     }
   const {data} = await axios.get(backendApi.getAllProducts.url , {
     params : {
@@ -164,9 +143,7 @@ const HomePage = async () => {
   if (data?.success) {
     allProducts = data?.data
   }
-const response = await axios.get(backendApi.getBestSeller.url)
-const result = await response.data
-console.log(result);
+
   return (
     <>
       <Hero />
