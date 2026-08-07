@@ -3,9 +3,6 @@
 import backendApi from "@/common/BackendApi"
 import ProductGrid from "@/components/main/ProductGrid"
 import FilterSideBar from "@/components/shared/FilterSideBar"
-
-
-
 import SortOptions from "@/components/shared/SortOptions"
 import axios from "axios"
 import { useSearchParams } from "next/navigation"
@@ -26,7 +23,6 @@ const page = () => {
         }
     };
     const getAllProducts = async () => {
-      console.log(searchParams);
       const {data} = await axios.get(backendApi.getAllProducts.url)
       if (data.success) {
         setProducts(data?.data)
@@ -43,6 +39,7 @@ const page = () => {
     
     } ,[])
     useEffect(()=>{
+      console.log(searchParams);
       getAllProducts()
     },[])
   return (
