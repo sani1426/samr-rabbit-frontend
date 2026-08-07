@@ -164,12 +164,9 @@ const HomePage = async () => {
   if (data?.success) {
     allProducts = data?.data
   }
-const getBestSeller = async () => {
-  const {data} = await axios.get(backendApi.getBestSeller.url)
-  console.log(data);
-}
- 
-getBestSeller()
+const response = await axios.get(backendApi.getBestSeller.url)
+const result = await response.data
+console.log(result);
   return (
     <>
       <Hero />
