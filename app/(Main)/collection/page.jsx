@@ -8,11 +8,13 @@ import FilterSideBar from "@/components/shared/FilterSideBar"
 
 import SortOptions from "@/components/shared/SortOptions"
 import axios from "axios"
+import { useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useRef, useState } from "react"
 import {FaFilter} from "react-icons/fa"
 import { toast } from "sonner"
 
 const page = () => {
+  const {searchParams} = useSearchParams()
     const [products , setProducts] = useState([])
     const sidebarRef = useRef(null)
     const [isSidebarOpen , setIsSidebarOpen]=useState(false)
@@ -24,6 +26,7 @@ const page = () => {
         }
     };
     const getAllProducts = async () => {
+      console.log(searchParams);
       const {data} = await axios.get(backendApi.AllProducts.url)
       if (data.success) {
         setProducts(data?.data)
