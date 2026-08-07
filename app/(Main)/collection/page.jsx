@@ -27,7 +27,7 @@ const page = () => {
     };
     const getAllProducts = async () => {
       console.log(searchParams);
-      const {data} = await axios.get(backendApi.AllProducts.url)
+      const {data} = await axios.get(backendApi.getAllProducts.url)
       if (data.success) {
         setProducts(data?.data)
       } else {
