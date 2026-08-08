@@ -26,15 +26,30 @@ const page = () => {
       if (typeof window !== "undefined") {
         const paramsString = window.location.search;
         const searchParams = new URLSearchParams(paramsString);
-              console.log(searchParams.get("gender"));
+        if(searchParams.has("gender")) {
+          const gender = searchParams.get("gender")
+ const { data } = await axios.get(backendApi.getAllProducts.url , {
+  params : {
+    gender : gender
+  }
+ });
+ if (data.success) {
+   setProducts(data?.data);
+ } else {
+   toast.error(data.message);
+ }
+        }else{
+          const {data} = await axios.get(backendApi.getAllProducts.url)
+           if (data.success) {
+             setProducts(data?.data);
+           } else {
+             toast.error(data.message);
+           }
+        }
+
       }
 
-      const {data} = await axios.get(backendApi.getAllProducts.url)
-      if (data.success) {
-        setProducts(data?.data)
-      } else {
-        toast.error(data.message)
-      }
+     
     }
     useEffect(()=> {
         document.addEventListener("mousedown" , handleClickOutside);
