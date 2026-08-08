@@ -23,7 +23,7 @@ const page = () => {
         }
     };
     const getAllProducts = async () => {
-      if (typeof window === "undefined") {
+      if (typeof window !== "undefined") {
         const paramsString = window.location.search;
         const searchParams = new URLSearchParams(paramsString);
               console.log(searchParams.get("gender"));
