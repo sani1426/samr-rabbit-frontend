@@ -11,8 +11,7 @@ import {FaFilter} from "react-icons/fa"
 import { toast } from "sonner"
 
 const page = () => {
-  const paramsString = window.location.search;
-  const searchParams = new URLSearchParams(paramsString);
+
     const [products , setProducts] = useState([])
     const sidebarRef = useRef(null)
     const [isSidebarOpen , setIsSidebarOpen]=useState(false)
@@ -24,6 +23,12 @@ const page = () => {
         }
     };
     const getAllProducts = async () => {
+      if (typeof window === "undefined") {
+        const paramsString = window.location.search;
+        const searchParams = new URLSearchParams(paramsString);
+              console.log(searchParams.get("gender"));
+      }
+
       const {data} = await axios.get(backendApi.getAllProducts.url)
       if (data.success) {
         setProducts(data?.data)
@@ -40,7 +45,7 @@ const page = () => {
     
     } ,[])
     useEffect(()=>{
-      console.log(searchParams.get("gender"));
+
       getAllProducts()
     },[])
   return (
