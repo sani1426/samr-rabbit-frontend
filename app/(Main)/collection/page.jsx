@@ -11,7 +11,8 @@ import {FaFilter} from "react-icons/fa"
 import { toast } from "sonner"
 
 const page = () => {
-  const searchParams =  URLSearchParams.getAll("gender")
+  const paramsString = window.location.search;
+  const searchParams = new URLSearchParams(paramsString);
     const [products , setProducts] = useState([])
     const sidebarRef = useRef(null)
     const [isSidebarOpen , setIsSidebarOpen]=useState(false)
@@ -39,7 +40,7 @@ const page = () => {
     
     } ,[])
     useEffect(()=>{
-      console.log(searchParams);
+      console.log(searchParams.get("gender"));
       getAllProducts()
     },[])
   return (
